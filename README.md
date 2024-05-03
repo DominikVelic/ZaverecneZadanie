@@ -1,5 +1,3 @@
-# ZaverecneZadanie
-
 # Zadanie projektu
 
 ## 1. Všeobecné pokyny
