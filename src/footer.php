@@ -1,19 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-
-<body>
-
-    <footer>
-        <p>Tuto je footer</p>
-    </footer>
-
-
-</body>
-
-</html>
+<footer>
+    <div class="d-flex justify-content-center p-4 mt-5 w-100 bg-dark text-white">
+        <p><?php echo $lang['footer_text'] ?></p>
+    </div>
+</footer>
