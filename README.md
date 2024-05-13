@@ -89,8 +89,8 @@ GUI a funkcionalita pre administrátora | 12
 Export do CSV a PDF | 10
 Balíček Docker | 16
 Používanie správy verzií všetkými členmi tímu | 18
-Vyplnenie záverečnej žiadosti | 218
-Video dokumentácia | 81
+Vyplnenie záverečnej žiadosti | 21
+Video dokumentácia | 8
 Minimálne 3 záväzky na člena | 2
 Grafická úprava, štruktúra, navigácia, schéma databázy, kompletnosť zadania projektu atď. | Variabilné
 
