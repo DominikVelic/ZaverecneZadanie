@@ -4,15 +4,15 @@ session_start();
 
 // Check if language is set in the session, otherwise default to English
 if (isset($_SESSION['lang'])) {
-    include($_SESSION['lang'] . '.php');
+    include('./language/' . $_SESSION['lang'] . '.php');
 } else {
-    include('en.php');
+    include('./language/en.php');
 }
 
 // Check if language switch is requested
 if (isset($_GET['lang'])) {
     $_SESSION['lang'] = $_GET['lang'];
-    include($_GET['lang'] . '.php');
+    include('./language/' . $_GET['lang'] . '.php');
 }
 ?>
 
