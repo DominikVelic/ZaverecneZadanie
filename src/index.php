@@ -9,7 +9,7 @@ if (isset($_SESSION['lang'])) {
     include('./language/sk.php');
 }
 
-// Check if language switch is requested
+// Check if language switch is requesteded
 if (isset($_GET['lang'])) {
     $_SESSION['lang'] = $_GET['lang'];
     include('./language/' . $_GET['lang'] . '.php');
