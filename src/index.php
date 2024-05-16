@@ -31,7 +31,18 @@ if (isset($_GET['lang'])) {
 
     <?php require "header.php" ?>
 
+    <h2><?php
+session_start();// IBA NA KONTROLU TO TU MAM Sorrow
 
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    // Neprihlaseny pouzivatel, zobraz odkaz na Login alebo Register stranku.
+    echo '<p>Nie ste prihlaseny';
+} else {
+    // Prihlaseny pouzivatel, zobraz odkaz na zabezpecenu stranku.
+    echo '<p>Vitaj ' . $_SESSION['fullname'] . ' </p>';
+    echo '<a href="restricted.php">Zabezpecena stranka</a>';
+}
+?></h2>
     <div class="container">
         <div class="row">
             <div class="column">

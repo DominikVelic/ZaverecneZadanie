@@ -12,6 +12,15 @@
                     </li>
                 </ul>
                 <ul class="navbar-nav ms-auto">
+                    <!-- Login Button -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="2FA/login.php">Login</a>
+                    </li>
+                    <!-- Register Button -->
+                    <li class="nav-item">
+                        <a class="nav-link" href="2FA/register.php">Register</a>
+                    </li>
+                    <!-- Language Dropdown -->
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <?php echo $lang['language_dropdown'] ?>
@@ -22,7 +31,6 @@
                         </ul>
                     </li>
                 </ul>
-
             </div>
         </div>
     </nav>
