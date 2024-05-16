@@ -6,7 +6,7 @@ $password = "password";
 $database = 'db';
 
 $conn = new mysqli($hostname, $username, $password, $database);
-
+require_once '/PHPGangsta/GoogleAuthenticator.php';
 if (!$conn) {
     die('Connection failed: ' . mysqli_connect_error());
 }
