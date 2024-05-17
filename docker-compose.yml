@@ -13,7 +13,9 @@ services:
       - app-network
 
   php:
-    image: php:8.1-fpm
+    build:
+      context: ./.docker/php
+      dockerfile: Dockerfile
     volumes:
       - ./src:/var/www/php
       - ./.docker/php/php.ini:/usr/local/etc/php/php.ini
@@ -25,6 +27,7 @@ services:
     volumes:
       - db_data:/var/lib/mysql
       - ./.docker/mysql/my.cnf:/etc/mysql/conf.d/custom.cnf
+      - ./.docker/mysql/dump.sql:/docker-entrypoint-initdb.d/dump.sql
     environment:
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
       MYSQL_DATABASE: ${MYSQL_DATABASE}

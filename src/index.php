@@ -1,7 +1,6 @@
 <?php
 session_start();
 
-
 // Check if language is set in the session, otherwise default to English
 if (isset($_SESSION['lang'])) {
     include('./language/' . $_SESSION['lang'] . '.php');
@@ -31,27 +30,27 @@ if (isset($_GET['lang'])) {
 
     <?php require "header.php" ?>
 
-    <h2><?php
-session_start();// IBA NA KONTROLU TO TU MAM Sorrow
 
-if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-    // Neprihlaseny pouzivatel, zobraz odkaz na Login alebo Register stranku.
-    echo '<p>Nie ste prihlaseny';
-} else {
-    // Prihlaseny pouzivatel, zobraz odkaz na zabezpecenu stranku.
-    echo '<p>Vitaj ' . $_SESSION['fullname'] . ' </p>';
-    echo '<a href="restricted.php">Zabezpecena stranka</a>';
-}
-?></h2>
-    <div class="container">
-        <div class="row">
-            <div class="column">
-                <h1>Init</h1>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Beatae autem sapiente corrupti? Eveniet beatae atque id nulla quaerat sit inventore sed distinctio sapiente. Aliquid quas quisquam placeat, ex sit expedita.</p>
-            </div>
-        </div>
-    </div>
+    <?php
+    // skontroluj ci je pouzivatel prihlaseny
+    if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+        // Neprihlaseny pouzivatel, zobraz neprihlaseneho pouzivatela content.
+        $page = "guest_user.php";
+    } else {
+        // Prihlaseny pouzivatel, zobraz prihlaseneho pouzivatela content.
+        $page = "logged_user.php";
+    }
 
+    // skontroluj ci vobec file existuje
+    if (file_exists($page)) {
+        require $page;
+    } else {
+        // ak nie tak error
+        echo "Error: Page not found.";
+    }
+    ?>
+
+    
 
 
     <?php require "footer.php" ?>

@@ -14,11 +14,11 @@
                 <ul class="navbar-nav ms-auto">
                     <!-- Login Button -->
                     <li class="nav-item">
-                        <a class="nav-link" href="2FA/login.php">Login</a>
+                        <a class="nav-link" href="2FA/login.php"><?php echo $lang['login_text'] ?></a>
                     </li>
                     <!-- Register Button -->
                     <li class="nav-item">
-                        <a class="nav-link" href="2FA/register.php">Register</a>
+                        <a class="nav-link" href="2FA/register.php"><?php echo $lang['register_text'] ?></a>
                     </li>
                     <!-- Language Dropdown -->
                     <li class="nav-item dropdown">
