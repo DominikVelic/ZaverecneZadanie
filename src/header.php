@@ -26,8 +26,8 @@
                             <?php echo $lang['language_dropdown'] ?>
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item">SK</a></li>
-                            <li><a class="dropdown-item">EN</a></li>
+                            <li><a class="dropdown-item" href="?lang=sk">SK</a></li>
+                            <li><a class="dropdown-item" href="?lang=en">EN</a></li>
                         </ul>
                     </li>
                 </ul>

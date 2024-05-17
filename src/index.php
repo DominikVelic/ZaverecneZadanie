@@ -1,18 +1,9 @@
 <?php
 session_start();
 
-// Check if language is set in the session, otherwise default to English
-if (isset($_SESSION['lang'])) {
-    include('./language/' . $_SESSION['lang'] . '.php');
-} else {
-    include('./language/sk.php');
-}
-
-// Check if language switch is requesteded
-if (isset($_GET['lang'])) {
-    $_SESSION['lang'] = $_GET['lang'];
-    include('./language/' . $_GET['lang'] . '.php');
-}
+// Default to Slovak if lang parameter is not set
+$lang_file = isset($_GET['lang']) ? $_GET['lang'] : 'sk';
+include('./language/' . $lang_file . '.php');
 ?>
 
 <!DOCTYPE html>
@@ -50,7 +41,7 @@ if (isset($_GET['lang'])) {
     }
     ?>
 
-    
+
 
 
     <?php require "footer.php" ?>
