@@ -168,13 +168,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 </head>
 
 <body>
-    <header>
-        <hgroup>
-            <h1>Registracia</h1>
-        </hgroup>
-    </header>
+    <?php require "../header.php" ?>
     <main>
 
+        <h1>Registracia</h1>
 
         <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
 
@@ -230,6 +227,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <p class="mt-3">Máte vytvorené konto? <a href="login.php">Prihláste sa tu.</a></p>
 
     </main>
+
+    <?php require "../footer.php" ?>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>
 

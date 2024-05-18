@@ -1,9 +1,7 @@
 <?php
 session_start();
 
-// Default to Slovak if lang parameter is not set
-$lang_file = isset($_GET['lang']) ? $_GET['lang'] : 'sk';
-include('./language/' . $lang_file . '.php');
+require "language_change.php"
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +18,6 @@ include('./language/' . $lang_file . '.php');
 <body>
 
     <?php require "header.php" ?>
-
 
     <?php
     // skontroluj ci je pouzivatel prihlaseny
