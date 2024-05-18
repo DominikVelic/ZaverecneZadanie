@@ -1,2 +1,4 @@
 Precitajte webte2_final.pdf         
-Te mogyoro feju farkatlan sorompo
+
+Som si zmenil email uz to bude davat na moj stu 
+takže AJezsoa som ja tiež aj Aron Jezso len jeden je sukromný git a druhý skolský
