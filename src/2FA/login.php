@@ -61,38 +61,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
 
     <main>
-
-        <h1>Prihlasenie</h1>
-
-        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="needs-validation" novalidate>
-
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="login" value="" id="login" required>
-                <label for="login" class="form-label">Prihlasovacie meno:</label>
-
-            </div>
-
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control" name="password" value="" id="password" required>
-                <label for="password" class="form-label">Heslo:</label>
-
-            </div>
-
-            <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="2fa" value="" id="2fa" required>
-                <label for="2fa" class="form-label">2FA kod:</label>
-            </div>
-
-            <div class="row">
-                <div class="col mb-3">
-                    <a href="<?php echo filter_var($auth_url, FILTER_SANITIZE_URL); ?>" class="btn btn-primary">Google prihlasenie</a>
-                    <button type="submit" class="btn btn-primary">Prihlásiť sa</button>
+        <div class="form-container">
+            <h1>Prihlasenie</h1>
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="needs-validation" novalidate>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="login" id="login" required>
+                    <label for="login" class="form-label">Prihlasovacie meno:</label>
                 </div>
-            </div>
-
-        </form>
-
-        <p>Este nemate vytvorene konto? <a href="register.php">Registrujte sa tu.</a></p>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" name="password" id="password" required>
+                    <label for="password" class="form-label">Heslo:</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" name="2fa" id="2fa" required>
+                    <label for="2fa" class="form-label">2FA kod:</label>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <a href="<?php echo filter_var($auth_url, FILTER_SANITIZE_URL); ?>" class="btn btn-primary">Google prihlasenie</a>
+                        <button type="submit" class="btn btn-primary">Prihlásiť sa</button>
+                    </div>
+                </div>
+            </form>
+            <p>Este nemate vytvorene konto? <a href="register.php">Registrujte sa tu.</a></p>
+        </div>
     </main>
 
     <?php require "../footer.php" ?>

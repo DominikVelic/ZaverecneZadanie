@@ -156,63 +156,52 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 
 <body>
-    <main>
-
-        <h1>Registracia</h1>
-
-        <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
-
-            <div class="row">
-                <div class="mb-3 col">
-                    <label for="firstname" class="form-label">Meno:</label>
-                    <input type="text" class="form-control" name="firstname" value="" id="firstname" placeholder="napr. Jonatan" required>
-                    <div class="invalid-feedback">
-                        Prosim zadajte meno.
+<main>
+        <div class="form-container">
+            <h1>Registracia</h1>
+            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+                <div class="row">
+                    <div class="mb-3 col">
+                        <label for="firstname" class="form-label">Meno:</label>
+                        <input type="text" class="form-control" name="firstname" id="firstname" placeholder="napr. Erik" required>
+                        <div class="invalid-feedback">
+                            Prosim zadajte meno.
+                        </div>
+                    </div>
+                    <div class="mb-3 col">
+                        <label for="lastname" class="form-label">Priezvisko:</label>
+                        <input type="text" class="form-control" name="lastname" id="lastname" placeholder="napr. Prdár" required>
                     </div>
                 </div>
-                <div class="mb-3 col">
-                    <label for="lastname" class="form-label">Priezvisko:</label>
-                    <input type="text" class="form-control" name="lastname" value="" id="lastname" placeholder="napr. Petrzlen" required>
+                <div class="mb-3">
+                    <label for="email" class="form-label">E-mail:</label>
+                    <div class="input-group">
+                        <div class="input-group-text">@</div>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="napr. erik.prdar@example.com" required>
+                    </div>
                 </div>
-            </div>
-
-
-            <div class="mb-3">
-                <label for="email" class="form-label">E-mail:</label>
-                <div class="input-group">
-                    <div class="input-group-text">@</div>
-                    <input type="email" class="form-control" name="email" value="" id="email" placeholder="napr. jpetrzlen@example.com" required>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="login" id="login" placeholder="napr. prdar" required>
+                    <label for="login" class="form-label">Login:</label>
                 </div>
-            </div>
-
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="login" value="" id="login" placeholder="napr. jperasin" required>
-                <label for="login" class="form-label">Login:</label>
-            </div>
-
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control" name="password" value="" id="password" required>
-                <label for="password" class="form-label">Heslo:</label>
-            </div>
-
-            <button type="submit" class="btn btn-primary">Vytvoriť konto</button>
-
-            <?php
-            if (!empty($errmsg)) {
-                echo '<div class="alert alert-danger mt-3" role="alert">' . $errmsg . '</div>';
-            }
-            if (isset($qrcode)) {
-                echo '<p class="mt-3">Naskenujte QR kód do aplikácie Authenticator pre 2FA:</p>';
-                echo '<img src="' . $qrcode . '" alt="QR kód pre aplikáciu Authenticator" class="img-fluid">';
-                echo '<p class="mt-3">Teraz sa môžete prihlásiť: <a href="login.php" class="btn btn-primary">Prihlásiť sa</a></p>';
-            }
-            ?>
-
-        </form>
-
-
-        <p class="mt-3">Máte vytvorené konto? <a href="login.php">Prihláste sa tu.</a></p>
-
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" name="password" id="password" placeholder="napr. prdar" required>
+                    <label for="password" class="form-label">Heslo:</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Vytvoriť konto</button>
+                <?php
+                if (!empty($errmsg)) {
+                    echo '<div class="alert alert-danger mt-3" role="alert">' . $errmsg . '</div>';
+                }
+                if (isset($qrcode)) {
+                    echo '<p class="mt-3">Naskenujte QR kód do aplikácie Authenticator pre 2FA:</p>';
+                    echo '<img src="' . $qrcode . '" alt="QR kód pre aplikáciu Authenticator" class="img-fluid">';
+                    echo '<p class="mt-3">Teraz sa môžete prihlásiť: <a href="login.php" class="btn btn-primary">Prihlásiť sa</a></p>';
+                }
+                ?>
+            </form>
+            <p class="mt-3">Máte vytvorené konto? <a href="login.php">Prihláste sa tu.</a></p>
+        </div>
     </main>
 
     <?php require "../footer.php" ?>
