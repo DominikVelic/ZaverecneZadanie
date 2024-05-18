@@ -1,0 +1,6 @@
+# Ignore the entire .docker/ folder
+.docker/
+
+# Ignore .env
+.env
+
