@@ -1,5 +1,8 @@
 # Ignore the entire .docker/ folder
-.docker/
+.docker/*
+
+# Except for .docker/mysql/sql-scripts
+!.docker/mysql/sql-scripts
 
 # Ignore .env
 .env
