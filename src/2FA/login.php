@@ -4,7 +4,7 @@ session_start();
 
 require_once '../.config.php';
 
-// Check if the user is already logged in, if yes then redirect him to welcome page
+// Check if the user is already logged in, if yes then redirect him to welcome pageaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     header("location: ./index.php");
     exit;
@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <body>
     <header>
         <hgroup>
-            <h1>Prihlasenie</h1>
+            <h1>Prihlasenieaaaaaaaaaaaaaaaaaaaa</h1>
         </hgroup>
     </header>
     <main>
