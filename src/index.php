@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 
 function handleFormSubmission() {
     if (isset($_GET['code'])) {
