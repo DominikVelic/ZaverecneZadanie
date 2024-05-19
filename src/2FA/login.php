@@ -1,13 +1,14 @@
 <?php
-require "../header.php";
-require_once '../.config.php';
+
+session_start();
 
 // Check if the user is already logged in, if yes then redirect him to the welcome page
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     header("location: ../index.php"); // treba sem ten restricted
     exit;
 }
-
+require "../header.php";
+require_once '../.config.php';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // Check if login and password are provided

@@ -1,4 +1,8 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+require_once __DIR__ . '/PHPGangsta/GoogleAuthenticator.php';
 
 $hostname = "db";
 $username = 'user';
@@ -7,11 +11,10 @@ $database = 'db';
 
 $conn = new mysqli($hostname, $username, $password, $database);
 
-require_once '/PHPGangsta/GoogleAuthenticator.php';
+
 
 if (!$conn) {
     die('Connection failed: ' . mysqli_connect_error());
 }
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
+
