@@ -1,25 +1,24 @@
 <?php
-
 session_start();
 
-// Check if the user is already logged in, if yes then redirect him to the welcome page
+
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
-    header("location: ../index.php"); // treba sem ten restricted
+    header("location: /index.php"); // Already logged in
     exit;
 }
-require "../header.php";
-require_once '../.config.php';
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    // Check if login and password are provided
-    if (empty($_POST["login"]) || empty($_POST["password"])) {
-        echo "Zadajte meno a heslo.";
+
+require_once '../.config.php';
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Check if login, password, and 2FA are provided
+    if (empty($_POST["login"]) || empty($_POST["password"]) || empty($_POST["2fa"])) {
+        echo "Zadajte meno, heslo a 2FA kód.";
         exit;
     }
 
     // Prepare SQL query to select user based on login or email
-    $sql = "SELECT fullname, email, login, password, created_at, 2fa_code FROM users WHERE login = ? OR email = ?";
-
+    $sql = "SELECT id, fullname, email, login, password, created_at, 2fa_code FROM users WHERE login = ? OR email = ?";
     $stmt = $conn->prepare($sql);
 
     // Bind parameters
@@ -29,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->store_result();
         if ($stmt->num_rows == 1) {
             // User exists, verify password
-            $stmt->bind_result($fullname, $email, $login, $hashed_password, $created_at, $two_fa_code);
+            $stmt->bind_result($user_id, $fullname, $email, $login, $hashed_password, $created_at, $two_fa_code);
             $stmt->fetch();
 
             if (password_verify($_POST['password'], $hashed_password)) {
@@ -40,13 +39,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                     // Store user data in session
                     $_SESSION["loggedin"] = true;
+                    $_SESSION["user_id"] = $user_id;
                     $_SESSION["login"] = $login;
                     $_SESSION["fullname"] = $fullname;
                     $_SESSION["email"] = $email;
                     $_SESSION["created_at"] = $created_at;
 
-                    // Redirect user to restricted page
-                    header("location: ../index.php"); //NOOOO TOTO TREBA DOROBIT
+                    echo "success"; // Indicate successful login
                     exit;
                 } else {
                     echo "Neplatný kód 2FA.";
@@ -63,39 +62,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $stmt->close();
     $conn->close();
+    exit;
 }
+require "../header.php";
 ?>
 
 <body>
 
-    <main>
-        <div class="form-container">
-            <h1>Prihlasenie</h1>
-            <form action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" class="needs-validation" novalidate>
-                <div class="form-floating mb-3">
-                    <input type="text" class="form-control" name="login" id="login" required>
-                    <label for="login" class="form-label">Prihlasovacie meno:</label>
+<main>
+    <div class="form-container">
+        <h1>Prihlasenie</h1>
+        <form id="login_form" class="needs-validation" novalidate>
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control" name="login" id="login" required>
+                <label for="login" class="form-label">Prihlasovacie meno:</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" name="password" id="password" required>
+                <label for="password" class="form-label">Heslo:</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="number" class="form-control" name="2fa" id="2fa" required>
+                <label for="2fa" class="form-label">2FA kod:</label>
+            </div>
+            <div class="row">
+                <div class="col mb-3">
+                    <a href="<?php echo filter_var($auth_url, FILTER_SANITIZE_URL); ?>" class="btn btn-primary">Google prihlasenie</a>
+                    <button type="submit" class="btn btn-primary">Prihlásiť sa</button>
                 </div>
-                <div class="form-floating mb-3">
-                    <input type="password" class="form-control" name="password" id="password" required>
-                    <label for="password" class="form-label">Heslo:</label>
-                </div>
-                <div class="form-floating mb-3">
-                    <input type="number" class="form-control" name="2fa" id="2fa" required>
-                    <label for="2fa" class="form-label">2FA kod:</label>
-                </div>
-                <div class="row">
-                    <div class="col mb-3">
-                        <a href="<?php echo filter_var($auth_url, FILTER_SANITIZE_URL); ?>" class="btn btn-primary">Google prihlasenie</a>
-                        <button type="submit" class="btn btn-primary">Prihlásiť sa</button>
-                    </div>
-                </div>
-            </form>
-            <p>Este nemate vytvorene konto? <a href="register.php">Registrujte sa tu.</a></p>
-        </div>
-    </main>
+            </div>
+        </form>
+        <p>Este nemate vytvorene konto? <a href="register.php">Registrujte sa tu.</a></p>
+        <div id="login_error" class="alert alert-danger mt-3" role="alert" style="display: none;"></div>
+    </div>
+</main>
 
-    <?php require "../footer.php" ?>
+<?php require "../footer.php" ?>
+
+<script>
+    document.getElementById('login_form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevent form submission
+
+        var formData = new FormData(this);
+
+        fetch("<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>", {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => {
+            if (data === 'success') {
+                window.location.href = '../index.php'; // Redirect on successful login
+            } else {
+                document.getElementById('login_error').textContent = data; // Display error message
+                document.getElementById('login_error').style.display = 'block'; // Show error message
+            }
+        })
+        .catch(error => console.error('Error:', error));
+    });
+</script>
+<?php require "../footer.php" ?>
 </body>
 
 </html>

@@ -9,6 +9,7 @@ $lang = array(
     'home_link_text' => "Home",
     "register_text" => "Register",
     "login_text" => 'Login',
-    "logout_text" => 'Logout'
+    "logout_text" => 'Logout',
+    'password_change_text' => 'Change password'
     // tuto anglicke preklady
 );

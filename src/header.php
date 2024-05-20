@@ -1,5 +1,5 @@
 <?php
-session_start();
+
 require "language_change.php";
 ?>
 
@@ -9,7 +9,7 @@ require "language_change.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Document</title>   
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/main.css">
 </head>
@@ -31,6 +31,9 @@ require "language_change.php";
                 <ul class="navbar-nav ms-auto">
                     <?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true): ?>
                         <!-- Logout Button -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/2FA/password_change.php"><?php echo $lang['password_change_text']; ?></a>
+                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/2FA/logout.php"><?php echo $lang['logout_text']; ?></a>
                         </li>

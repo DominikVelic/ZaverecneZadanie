@@ -1,5 +1,6 @@
 <?php
-
+session_start();
+require "header.php";
 
 function handleFormSubmission() {
     if (isset($_GET['code'])) {
@@ -21,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['code'])) {
     handleFormSubmission();
 }
 
-require "header.php";
+
 ?>
 
 <body>

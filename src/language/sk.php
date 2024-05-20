@@ -10,6 +10,7 @@ $lang = array(
     'home_link_text' => "Domov",
     "register_text" => "Registrovať sa",
     "login_text" => "Prihlásiť sa",
-    "logout_text" => "Odhlásit sa"
+    "logout_text" => "Odhlásit sa",
+    'password_change_text' => "Zmeniť heslo"
     // Tuto dat slovenske preklady
 );
