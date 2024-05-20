@@ -69,59 +69,57 @@ require "../header.php";
 
 <body>
 
-<main>
-    <div class="form-container">
-        <h1><?php echo $lang['login_text']; ?></h1>
-        <form id="login_form" class="needs-validation" novalidate>
-            <div class="form-floating mb-3">
-                <input type="text" class="form-control" name="login" id="login" required>
-                <label for="login" class="form-label"><?php echo $lang['login_text']; ?></label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="password" class="form-control" name="password" id="password" required>
-                <label for="password" class="form-label"><?php echo $lang['password_text']; ?></label>
-            </div>
-            <div class="form-floating mb-3">
-                <input type="number" class="form-control" name="2fa" id="2fa" required>
-                <label for="2fa" class="form-label">2FA kod:</label>
-            </div>
-            <div class="row">
-                <div class="col mb-3">
-                    <a href="<?php echo filter_var($auth_url, FILTER_SANITIZE_URL); ?>" class="btn btn-primary">Google prihlasenie</a>
-                    <button type="submit" class="btn btn-primary"><?php echo $lang['login_text']; ?></button>
+    <main>
+        <div class="form-container">
+            <h1><?php echo $lang['login_text']; ?></h1>
+            <form id="login_form" class="needs-validation" novalidate>
+                <div class="form-floating mb-3">
+                    <input type="text" class="form-control" name="login" id="login" required>
+                    <label for="login" class="form-label"><?php echo $lang['login_text']; ?></label>
                 </div>
-            </div>
-        </form>
-        <p><?php echo $lang['make_account_here_text']; ?> <a href="register.php"><?php echo $lang['register_here_text']; ?>.</a></p>
-        <div id="login_error" class="alert alert-danger mt-3" role="alert" style="display: none;"></div>
-    </div>
-</main>
+                <div class="form-floating mb-3">
+                    <input type="password" class="form-control" name="password" id="password" required>
+                    <label for="password" class="form-label"><?php echo $lang['password_text']; ?></label>
+                </div>
+                <div class="form-floating mb-3">
+                    <input type="number" class="form-control" name="2fa" id="2fa" required>
+                    <label for="2fa" class="form-label">2FA kod:</label>
+                </div>
+                <div class="row">
+                    <div class="col mb-3">
+                        <a href="<?php echo filter_var($auth_url, FILTER_SANITIZE_URL); ?>" class="btn btn-primary">Google prihlasenie</a>
+                        <button type="submit" class="btn btn-primary"><?php echo $lang['login_text']; ?></button>
+                    </div>
+                </div>
+            </form>
+            <p><?php echo $lang['make_account_here_text']; ?> <a href="register.php"><?php echo $lang['register_here_text']; ?>.</a></p>
+            <div id="login_error" class="alert alert-danger mt-3" role="alert" style="display: none;"></div>
+        </div>
+    </main>
 
-<?php require "../footer.php" ?>
+    <script>
+        document.getElementById('login_form').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent form submission
 
-<script>
-    document.getElementById('login_form').addEventListener('submit', function(event) {
-        event.preventDefault(); // Prevent form submission
+            var formData = new FormData(this);
 
-        var formData = new FormData(this);
-
-        fetch("<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>", {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => response.text())
-        .then(data => {
-            if (data === 'success') {
-                window.location.href = '../index.php'; // Redirect on successful login
-            } else {
-                document.getElementById('login_error').textContent = data; // Display error message
-                document.getElementById('login_error').style.display = 'block'; // Show error message
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    });
-</script>
-<?php require "../footer.php" ?>
+            fetch("<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>", {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(data => {
+                    if (data === 'success') {
+                        window.location.href = '../index.php'; // Redirect on successful login
+                    } else {
+                        document.getElementById('login_error').textContent = data; // Display error message
+                        document.getElementById('login_error').style.display = 'block'; // Show error message
+                    }
+                })
+                .catch(error => console.error('Error:', error));
+        });
+    </script>
+    <?php require "../footer.php" ?>
 </body>
 
 </html>
