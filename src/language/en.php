@@ -8,6 +8,7 @@ $lang = array(
     "header_title" => "Online voting system",
     'home_link_text' => "Home",
     "register_text" => "Register",
-    "login_text" => 'Login'
+    "login_text" => 'Login',
+    "logout_text" => 'Logout'
     // tuto anglicke preklady
 );

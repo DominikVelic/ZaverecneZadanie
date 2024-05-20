@@ -9,6 +9,7 @@ $lang = array(
     "header_title" => "Online hlasovací systém",
     'home_link_text' => "Domov",
     "register_text" => "Registrovať sa",
-    "login_text" => "Prihlásiť sa"
+    "login_text" => "Prihlásiť sa",
+    "logout_text" => "Odhlásit sa"
     // Tuto dat slovenske preklady
 );
