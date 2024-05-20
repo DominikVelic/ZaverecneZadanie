@@ -10,6 +10,14 @@ $lang = array(
     "register_text" => "Register",
     "login_text" => 'Login',
     "logout_text" => 'Logout',
-    'password_change_text' => 'Change password'
+    'password_change_text' => 'Change password',
+    'login_name_text' => "Login",
+    'password_text' => 'Password',
+    'name_text' => "Name",
+    'surname_text' => "Surname",
+    'have_account_text' => 'Do you have an account?',
+    'login_here_text' => 'Login here.',
+    'register_here_text' => 'Register here.',
+    'make_account_here_text' => 'Dont have an account yet?'
     // tuto anglicke preklady
 );

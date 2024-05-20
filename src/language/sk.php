@@ -11,6 +11,14 @@ $lang = array(
     "register_text" => "Registrovať sa",
     "login_text" => "Prihlásiť sa",
     "logout_text" => "Odhlásit sa",
-    'password_change_text' => "Zmeniť heslo"
+    'password_change_text' => "Zmeniť heslo",
+    'login_name_text' => "Prihlasovacie meno",
+    'password_text' => 'Heslo',
+    'name_text' => "Meno",
+    'surname_text' => "Priezvysko",
+    'have_account_text' => 'Máte vytvorené konto?',
+    'login_here_text' => 'Prihláste sa tu.',
+    'register_here_text' => 'Registrujte sa tu.',
+    'make_account_here_text' => 'Este nemate vytvorene konto?'
     // Tuto dat slovenske preklady
 );
