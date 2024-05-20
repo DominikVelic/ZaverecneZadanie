@@ -19,6 +19,13 @@ $lang = array(
     'have_account_text' => 'Máte vytvorené konto?',
     'login_here_text' => 'Prihláste sa tu.',
     'register_here_text' => 'Registrujte sa tu.',
-    'make_account_here_text' => 'Este nemate vytvorene konto?'
+    'make_account_here_text' => 'Este nemate vytvorene konto?',
+    'new_password_text' => 'Nové heslo',
+    'change_password_text' => 'Zmeniť heslo',
+    'confirm_new_password_text' => 'Podtvrďte nové heslo',
+    'welcome_text' => 'Vitaj',
+    'search_bar_text' => 'Vyhľadávanie',
+    'enter_5-digit_code_text' => "Zadaj  5 číselný kód",
+    'logged_in_text' => 'Si teraz prihlasený'
     // Tuto dat slovenske preklady
 );

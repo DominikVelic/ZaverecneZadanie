@@ -1,4 +1,4 @@
 <h2>
-    <p>Vitaj <?php echo $_SESSION['fullname'] ?> </p>
-    <p>Si teraz prihlaseny</p>
+    <p><?php echo $lang['welcome_text']; ?> <?php echo $_SESSION['fullname'] ?> </p>
+    <p><?php echo $lang['logged_in_text']; ?></p>
 </h2>

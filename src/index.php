@@ -49,11 +49,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['code'])) {
 
 <!-- Add search bar for 5-character code -->
 <div class="form-container">
-    <h1>Vyhľadávanie</h1>
+    <h1><?php echo $lang['search_bar_text']; ?></h1>
     <form action="index.php" method="get" class="needs-validation" novalidate>
         <div class="form-floating mb-3">
             <input type="text" class="form-control" name="code" id="code" maxlength="5" pattern="\d{5}" required>
-            <label for="code" class="form-label">Zadajte 5 znakový kód:</label>
+            <label for="code" class="form-label"><?php echo $lang['enter_5-digit_code_text']; ?></label>
             <?php
             if (isset($_SESSION['error'])) {
                 echo '<div class="text-danger">' . $_SESSION['error'] . '</div>';

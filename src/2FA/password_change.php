@@ -105,7 +105,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Password Change</title>
+    <title><?php echo $lang['password_change_text']; ?></title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css">
 </head>
 <body>
@@ -113,23 +113,23 @@ $conn->close();
 <main>
     
     <div class="form-container">
-        <h1>Password Change</h1>
+        <h1><?php echo $lang['password_change_text']; ?></h1>
         <div id="form_feedback"></div> <!-- Feedback message will be displayed here -->
         
             <form id="password_change_form" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
                 <div class="mb-3">
-                    <label for="current_password" class="form-label">Current Password:</label>
+                    <label for="current_password" class="form-label"><?php echo $lang['password_text']; ?></label>
                     <input type="password" class="form-control" name="current_password" id="current_password" required>
                 </div>
                 <div class="mb-3">
-                    <label for="new_password" class="form-label">New Password:</label>
+                    <label for="new_password" class="form-label"><?php echo $lang['new_password_text']; ?></label>
                     <input type="password" class="form-control" name="new_password" id="new_password" required>
                 </div>
                 <div class="mb-3">
-                    <label for="confirm_password" class="form-label">Confirm New Password:</label>
+                    <label for="confirm_password" class="form-label"><?php echo $lang['confirm_new_password_text']; ?></label>
                     <input type="password" class="form-control" name="confirm_password" id="confirm_password" required>
                 </div>
-                <button type="submit" class="btn btn-primary">Change Password</button>
+                <button type="submit" class="btn btn-primary"><?php echo $lang['change_password_text']; ?></button>
             </form>
         
         
