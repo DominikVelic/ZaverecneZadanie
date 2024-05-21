@@ -1,11 +1,2 @@
-# Ignore everything in the .docker/ directory
-.docker/*
-.docker/**
-
-# But not the sql-scripts directory and its contents
-!.docker/mysql/sql-scripts/
-!.docker/mysql/sql-scripts/*
-!.docker/mysql/sql-scripts/**
-
 # Ignore .env
 .env
