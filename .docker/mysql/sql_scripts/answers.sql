@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: May 21, 2024 at 09:53 AM
+-- Generation Time: May 21, 2024 at 10:14 AM
 -- Server version: 8.0.32
 -- PHP Version: 8.2.8
 
@@ -31,7 +31,8 @@ CREATE TABLE `answers` (
   `id` int NOT NULL,
   `answer` varchar(512) NOT NULL,
   `appearance` varchar(255) NOT NULL,
-  `count` int NOT NULL
+  `count` int NOT NULL,
+  `question_id` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -42,7 +43,8 @@ CREATE TABLE `answers` (
 -- Indexes for table `answers`
 --
 ALTER TABLE `answers`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `question_id` (`question_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -53,6 +55,16 @@ ALTER TABLE `answers`
 --
 ALTER TABLE `answers`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
+
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `answers`
+--
+ALTER TABLE `answers`
+  ADD CONSTRAINT `answers_ibfk_1` FOREIGN KEY (`question_id`) REFERENCES `questions` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

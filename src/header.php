@@ -1,6 +1,13 @@
 <?php
 
-require "language_change.php";
+
+$file = __DIR__ . "/language/language_change.php";
+
+if (file_exists($file)) {
+    include($file);
+} else {
+    echo "Warning: Language file not found.";
+}
 
 ?>
 

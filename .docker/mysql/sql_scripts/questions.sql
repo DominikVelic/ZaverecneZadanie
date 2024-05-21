@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: May 21, 2024 at 09:53 AM
+-- Generation Time: May 21, 2024 at 10:15 AM
 -- Server version: 8.0.32
 -- PHP Version: 8.2.8
 
@@ -33,7 +33,7 @@ CREATE TABLE `questions` (
   `subject` varchar(255) NOT NULL,
   `closed` tinyint(1) DEFAULT NULL,
   `code` int NOT NULL,
-  `answer_id` int NOT NULL
+  `date-created` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
