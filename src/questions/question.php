@@ -1,26 +1,62 @@
-
-
 <?php
+require_once '../.config.php';
 
-require '/'
+$response = [];
 
-?>
+if (isset($_POST['code']) && $_POST['code'] !== '') {
+    // Sanitize input to prevent SQL injection
+    $code = mysqli_real_escape_string($conn, $_POST['code']);
 
+    if (!is_numeric($code) || strlen((string)$code) !== 5) {
+        echo json_encode(array("error" => "Code is not a five-digit number"));
+        exit();
+    }
 
+    $query = "SELECT q.id as question_id, q.question, q.subject, q.closed, q.code, q.date_created, 
+                     a.id as answer_id, a.answer, a.appearance, a.count 
+              FROM questions q 
+              JOIN answers a ON q.id = a.question_id 
+              WHERE q.code = ?";
+    $stmt = mysqli_prepare($conn, $query);
 
-<!DOCTYPE html>
-<html lang="en">
+    if ($stmt) {
+        mysqli_stmt_bind_param($stmt, "i", $code);
+        mysqli_stmt_execute($stmt);
+        $result = mysqli_stmt_get_result($stmt);
 
+        if ($result && mysqli_num_rows($result) > 0) {
+            $question = null;
+            $answers = [];
 
+            while ($row = mysqli_fetch_assoc($result)) {
+                if (!$question) {
+                    $question = [
+                        'id' => $row['question_id'],
+                        'question' => $row['question'],
+                        'subject' => $row['subject'],
+                        'closed' => $row['closed'],
+                        'code' => $row['code'],
+                        'date_created' => $row['date_created'],
+                        'answers' => [] // Initialize the answers array inside the question
+                    ];
+                }
+                $question['answers'][] = [
+                    'id' => $row['answer_id'],
+                    'answer' => $row['answer'],
+                    'appearance' => $row['appearance'],
+                    'count' => $row['count']
+                ];
+            }
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+            $response['question'] = $question;
+        } else {
+            $response['error'] = "No questions found for the provided code";
+        }
+    } else {
+        $response['error'] = "Query preparation failed: " . mysqli_error($conn);
+    }
+} else {
+    $response['error'] = "No Code provided";
+}
 
-<body>
-
-</body>
-
-</html>
+echo json_encode($response);
