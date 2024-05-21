@@ -2,7 +2,8 @@
 session_start();
 require "header.php";
 
-function handleFormSubmission() {
+function handleFormSubmission()
+{
     if (isset($_GET['code'])) {
         $code = htmlspecialchars($_GET['code']);
         // Ensure the code is exactly 5 digits
@@ -26,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['code'])) {
 ?>
 
 <body>
-<div class="form-container">
+
     <?php
     // Check if the user is logged in
     if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
@@ -45,30 +46,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['code'])) {
         echo "Error: Page not found.";
     }
     ?>
-</div>
 
-<!-- Add search bar for 5-character code -->
-<div class="form-container">
-    <h1><?php echo $lang['search_bar_text']; ?></h1>
-    <form action="index.php" method="get" class="needs-validation" novalidate>
-        <div class="form-floating mb-3">
-            <input type="text" class="form-control" name="code" id="code" maxlength="5" pattern="\d{5}" required>
-            <label for="code" class="form-label"><?php echo $lang['enter_5-digit_code_text']; ?></label>
-            <?php
-            if (isset($_SESSION['error'])) {
-                echo '<div class="text-danger">' . $_SESSION['error'] . '</div>';
-                unset($_SESSION['error']);
-            }
-            ?>
-        </div>
-        <div class="row">
-            <div class="col mb-3">
-                <button type="submit" class="btn btn-primary">Vyhľadať</button>
-            </div>
-        </div>
-    </form>
-</div>
-<?php require "footer.php"; ?>
+
+
+    <?php require "footer.php"; ?>
 
 </body>
+
 </html>

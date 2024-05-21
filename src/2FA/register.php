@@ -77,7 +77,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     if (userExist($_POST['login'], $_POST['email']) === true) {
-        $errmsg .= "Pouzivatel s tymto e-mailom / loginom uz existuje.</p>";
+        $errmsg .= "<p>Pouzivatel s tymto e-mailom / loginom uz existuje.</p>";
     }
 
     //if (checkGmail($_POST['email'])) {  NEMAME REDIRECT
