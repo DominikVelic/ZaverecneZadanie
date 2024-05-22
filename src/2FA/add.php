@@ -1,27 +1,7 @@
 <?php
 
-//require_once '/var/www/node118.webte.fei.stuba.sk/115370_velic_z1/.config.php';
-
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
-
-// session_start();
-
-// if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-//     header("Location: index.php");
-//     exit;
-// }
-
-
-// // Establish connection to the database
-// $link = mysqli_connect($hostname, $username, $password, $dbname);
-
-// // Check if the connection was successful
-// if ($link->connect_errno) {
-//     echo "Failed to connect to MySQL: " . $link->connect_error;
-//     exit();
-// }
 
 ?>
 
