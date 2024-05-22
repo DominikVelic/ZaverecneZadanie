@@ -25,6 +25,11 @@ $lang = array(
     'welcome_text' => 'Welcome',
     'search_bar_text' => 'Searching',
     'enter_5-digit_code_text' => "Enter a 5-digit code",
-    'logged_in_text' => 'You are logged in'
+    'logged_in_text' => 'You are logged in',
+    'create_question_text' => 'Create question',
+    'google_login_text' => 'Google login',
+    'enter_name_here_text' => 'Please enter name here',
+    'scan_qr_code_here_text' => 'Scan the Qr code into the Google Authentificator app',
+    'you_can_login_now_text' => 'You can login now'
     // tuto anglicke preklady
 );

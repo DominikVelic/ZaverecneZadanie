@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: May 21, 2024 at 10:15 AM
+-- Generation Time: May 22, 2024 at 05:43 PM
 -- Server version: 8.0.32
 -- PHP Version: 8.2.8
 
@@ -33,7 +33,7 @@ CREATE TABLE `questions` (
   `subject` varchar(255) NOT NULL,
   `closed` tinyint(1) DEFAULT NULL,
   `code` int NOT NULL,
-  `date_created` date NOT NULL
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
@@ -55,16 +55,6 @@ ALTER TABLE `questions`
 --
 ALTER TABLE `questions`
   MODIFY `id` int NOT NULL AUTO_INCREMENT;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `questions`
---
-ALTER TABLE `questions`
-  ADD CONSTRAINT `questions_ibfk_1` FOREIGN KEY (`id`) REFERENCES `answers` (`id`) ON DELETE RESTRICT ON UPDATE RESTRICT;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
