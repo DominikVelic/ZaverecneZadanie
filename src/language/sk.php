@@ -26,7 +26,11 @@ $lang = array(
     'welcome_text' => 'Vitaj',
     'search_bar_text' => 'Vyhľadávanie',
     'enter_5-digit_code_text' => "Zadaj  5 číselný kód",
-    'logged_in_text' => 'Si teraz prihlasený'
+    'logged_in_text' => 'Si teraz prihlasený',
+    'question_head' => 'Otázka: ',
+    'invalid_feedback_name' => 'Prosim zadajte meno',
+    'scan_qr_code' => 'Naskenujte QR kód do aplikácie Authenticator pre 2FA: ',
+    'now_login' => 'Teraz sa môžete prihlásiť: '
     // Tuto dat slovenske preklady
     // Nje 
 );

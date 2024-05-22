@@ -25,6 +25,10 @@ $lang = array(
     'welcome_text' => 'Welcome',
     'search_bar_text' => 'Searching',
     'enter_5-digit_code_text' => "Enter a 5-digit code",
-    'logged_in_text' => 'You are logged in'
+    'logged_in_text' => 'You are logged in',
+    'question_head' => 'Question: ',
+    'invalid_feedback_name' => 'Please enter your name',
+    'scan_qr_code' => 'Scan your QR code with the Google Authenticator for 2FA app: ',
+    'now_login' => 'Now you can login: '
     // tuto anglicke preklady
 );
