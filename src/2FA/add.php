@@ -41,11 +41,7 @@ require '../header.php';
 <body>
 
     <div class="container">
-        <div class="row">
-            <div class="col-12 clean-a pb-5">
-                <a href="index.php" class="me-5">Home</a>
-            </div>
-        </div>
+
 
         <div class="row">
             <div class="card col-12 mb-5 bg-dark text-white">
@@ -63,7 +59,7 @@ require '../header.php';
                                     <input type="text" class="form-control" id="subject" name="subject">
                                 </div>
 
-                                <div id="prize_container">
+                                <div id="prize_container" class="text-dark">
                                     <div id="prize0" class="card p-2 mb-2 prize-section">
                                         <div class="card-text">
                                             <div class="form-group mb-3">

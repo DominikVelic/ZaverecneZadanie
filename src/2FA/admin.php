@@ -38,17 +38,6 @@ $conn->close();
 require "../header.php";
 ?>
 
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/main.css">
-</head>
-
 <body>
     <div class="container">
         <h1>Admin Panel</h1>
@@ -96,7 +85,6 @@ require "../header.php";
             </tbody>
         </table>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFy5rZA+uj0v4/JmMQIatI0rsKYYCXsmY5RxpLv6MRj2l6RYz8pA/6iw/8" crossorigin="anonymous"></script>
 </body>
 
 </html>

@@ -10,15 +10,6 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 require_once '../.config.php';
 
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
-// Check connection
-if ($conn->connect_errno) {
-    echo "Failed to connect to MySQL: " . $link->connect_error;
-    exit();
-}
-
 // Retrieve form data
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Process form data
@@ -26,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = isset($_POST['subject']) ? $_POST['subject'] : null;
     $answer = isset($_POST['answer']) ? $_POST['answer'] : array();
 } else {
-    
+
     echo json_encode(array('POST' => false));
     header("Location: addForm.php");
     exit();
@@ -40,7 +31,7 @@ if ($death == '') {
 $characters = '0123456789';
 $charactersLength = strlen($characters);
 
-for(;;){
+for (;;) {
     $randomCode = '';
 
     for ($i = 0; $i < 5; $i++) {
@@ -48,46 +39,45 @@ for(;;){
     }
 
     $query = "SELECT * FROM questions WHERE code = ?";
-    $stmt = $link->prepare($query);
+    $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $randomCode);
     $result = $stmt->get_result();
 
     if ($result->num_rows == 0) {
         break;
     }
-
 }
 
-    $query = "INSERT INTO questions (question,subject,closed,code) VALUES (?,?,?,?)";
-    $stmt = $link->prepare($query);
-    $stmt->bind_param("ssii", $question, $subject, 0, $random);
-    if ($stmt->execute()) {
-        echo json_encode(array("Execute succesful"));
-    } else {
-        echo "Error: " . $stmt->error;
-    }
-    $stmt->close();
+$query = "INSERT INTO questions (question,subject,closed,code) VALUES (?,?,?,?)";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("ssii", $question, $subject, 0, $random);
+if ($stmt->execute()) {
+    echo json_encode(array("Execute succesful"));
+} else {
+    echo "Error: " . $stmt->error;
+}
+$stmt->close();
 
-    $query = "SELECT id FROM questions WHERE code = ?";
-    $stmt = $link->prepare($query);
-    $stmt->bind_param("i", $randomCode);
-    $result = $stmt->get_result();
+$query = "SELECT id FROM questions WHERE code = ?";
+$stmt = $conn->prepare($query);
+$stmt->bind_param("i", $randomCode);
+$result = $stmt->get_result();
 
 $j = 0;
 
 for ($i = 0; $i < count($categories); $i++) {
-        $prizeDetailId = null;
-        $query = "INSERT INTO answers (answer,count,question_id) VALUES (?,?,?)";
-        $stmt = $link->prepare($query);
-        $stmt->bind_param("sii", $answer[$i], 0, $result);
-        if ($stmt->execute()) {
-            echo json_encode(array("Execute succesful"));
-        } else {
-            echo json_encode("Error: " . $stmt->error);
-        }
+    $prizeDetailId = null;
+    $query = "INSERT INTO answers (answer,count,question_id) VALUES (?,?,?)";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("sii", $answer[$i], 0, $result);
+    if ($stmt->execute()) {
+        echo json_encode(array("Execute succesful"));
+    } else {
+        echo json_encode("Error: " . $stmt->error);
+    }
     $stmt->close();
 }
 
-mysqli_close($link);
+mysqli_close($conn);
 header("Location: receiver.php?id=$id");
 exit();
