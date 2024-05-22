@@ -15,7 +15,7 @@ ini_set('display_errors', 1);
 
 // Check connection
 if ($conn->connect_errno) {
-    echo "Failed to connect to MySQL: " . $link->connect_error;
+    echo "Failed to connect to MySQL: " . $conn->connect_error;
     exit();
 }
 
@@ -26,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = isset($_POST['subject']) ? $_POST['subject'] : null;
     $answer = isset($_POST['answer']) ? $_POST['answer'] : array();
 } else {
-    
+
     echo json_encode(array('POST' => false));
     header("Location: addForm.php");
     exit();
@@ -48,7 +48,7 @@ for(;;){
     }
 
     $query = "SELECT * FROM questions WHERE code = ?";
-    $stmt = $link->prepare($query);
+    $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $randomCode);
     $result = $stmt->get_result();
 
@@ -59,7 +59,7 @@ for(;;){
 }
 
     $query = "INSERT INTO questions (question,subject,closed,code) VALUES (?,?,?,?)";
-    $stmt = $link->prepare($query);
+    $stmt = $conn->prepare($query);
     $stmt->bind_param("ssii", $question, $subject, 0, $random);
     if ($stmt->execute()) {
         echo json_encode(array("Execute succesful"));
@@ -69,7 +69,7 @@ for(;;){
     $stmt->close();
 
     $query = "SELECT id FROM questions WHERE code = ?";
-    $stmt = $link->prepare($query);
+    $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $randomCode);
     $result = $stmt->get_result();
 
@@ -78,7 +78,7 @@ $j = 0;
 for ($i = 0; $i < count($categories); $i++) {
         $prizeDetailId = null;
         $query = "INSERT INTO answers (answer,count,question_id) VALUES (?,?,?)";
-        $stmt = $link->prepare($query);
+        $stmt = $conn->prepare($query);
         $stmt->bind_param("sii", $answer[$i], 0, $result);
         if ($stmt->execute()) {
             echo json_encode(array("Execute succesful"));
@@ -88,6 +88,6 @@ for ($i = 0; $i < count($categories); $i++) {
     $stmt->close();
 }
 
-mysqli_close($link);
+mysqli_close($conn);
 header("Location: receiver.php?id=$id");
 exit();
