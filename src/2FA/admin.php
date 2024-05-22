@@ -61,6 +61,17 @@ $conn->close();
 require "../header.php";
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
 <body>
     <div class="container">
         <h1>Admin Panel</h1>
@@ -113,6 +124,47 @@ require "../header.php";
             </tbody>
         </table>
     </div>
+
+    <!-- Update Password Modal -->
+    <div class="modal fade" id="updatePasswordModal" tabindex="-1" aria-labelledby="updatePasswordModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <form method="POST">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="updatePasswordModalLabel">Update Password</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" name="update_password_user_id" id="update_password_user_id">
+                        <div class="mb-3">
+                            <label for="new_password" class="form-label">New Password</label>
+                            <input type="password" class="form-control" id="new_password" name="new_password" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Update Password</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFy5rZA+uj0v4/JmMQIatI0rsKYYCXsmY5RxpLv6MRj2l6RYz8pA/6iw/8" crossorigin="anonymous"></script>
+    <script>
+        var updatePasswordModal = document.getElementById('updatePasswordModal');
+        updatePasswordModal.addEventListener('show.bs.modal', function(event) {
+            var button = event.relatedTarget;
+            var userId = button.getAttribute('data-user-id');
+            var userName = button.getAttribute('data-user-name');
+
+            var modalTitle = updatePasswordModal.querySelector('.modal-title');
+            var modalUserId = updatePasswordModal.querySelector('#update_password_user_id');
+
+            modalTitle.textContent = 'Update Password for ' + userName;
+            modalUserId.value = userId;
+        });
+    </script>
 </body>
 
 </html>
