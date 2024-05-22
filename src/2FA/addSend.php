@@ -23,10 +23,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     exit();
 }
 
-if ($death == '') {
-    $death = null;
-}
-
 
 $characters = '0123456789';
 $charactersLength = strlen($characters);
