@@ -3,9 +3,9 @@ require_once '../.config.php';
 
 $response = [];
 
-if (isset($_POST['code']) && $_POST['code'] !== '') {
+if (isset($_GET['code']) && $_GET['code'] !== '') {
     // Sanitize input to prevent SQL injection
-    $code = mysqli_real_escape_string($conn, $_POST['code']);
+    $code = mysqli_real_escape_string($conn, $_GET['code']);
 
     if (!is_numeric($code) || strlen((string)$code) !== 5) {
         echo json_encode(array("error" => "Code is not a five-digit number"));

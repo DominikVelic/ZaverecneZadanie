@@ -26,6 +26,8 @@ require "header.php";
     ?>
 
 
+    <?php require "search_bar.php" ?>
+
 
     <?php require "footer.php"; ?>
 
