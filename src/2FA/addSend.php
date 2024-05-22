@@ -10,6 +10,18 @@ if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
 
 require_once '../.config.php';
 
+<<<<<<< HEAD
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+// Check connection
+if ($conn->connect_errno) {
+    echo "Failed to connect to MySQL: " . $conn->connect_error;
+    exit();
+}
+
+=======
+>>>>>>> c556dbef571d81d4316eadb5153cba5e58090577
 // Retrieve form data
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Process form data
@@ -48,6 +60,22 @@ for (;;) {
     }
 }
 
+<<<<<<< HEAD
+    $query = "INSERT INTO questions (question,subject,closed,code) VALUES (?,?,?,?)";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("ssii", $question, $subject, 0, $random);
+    if ($stmt->execute()) {
+        echo json_encode(array("Execute succesful"));
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+    $stmt->close();
+
+    $query = "SELECT id FROM questions WHERE code = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("i", $randomCode);
+    $result = $stmt->get_result();
+=======
 $query = "INSERT INTO questions (question,subject,closed,code) VALUES (?,?,?,?)";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("ssii", $question, $subject, 0, $random);
@@ -62,10 +90,22 @@ $query = "SELECT id FROM questions WHERE code = ?";
 $stmt = $conn->prepare($query);
 $stmt->bind_param("i", $randomCode);
 $result = $stmt->get_result();
+>>>>>>> c556dbef571d81d4316eadb5153cba5e58090577
 
 $j = 0;
 
 for ($i = 0; $i < count($categories); $i++) {
+<<<<<<< HEAD
+        $prizeDetailId = null;
+        $query = "INSERT INTO answers (answer,count,question_id) VALUES (?,?,?)";
+        $stmt = $conn->prepare($query);
+        $stmt->bind_param("sii", $answer[$i], 0, $result);
+        if ($stmt->execute()) {
+            echo json_encode(array("Execute succesful"));
+        } else {
+            echo json_encode("Error: " . $stmt->error);
+        }
+=======
     $prizeDetailId = null;
     $query = "INSERT INTO answers (answer,count,question_id) VALUES (?,?,?)";
     $stmt = $conn->prepare($query);
@@ -75,6 +115,7 @@ for ($i = 0; $i < count($categories); $i++) {
     } else {
         echo json_encode("Error: " . $stmt->error);
     }
+>>>>>>> c556dbef571d81d4316eadb5153cba5e58090577
     $stmt->close();
 }
 
