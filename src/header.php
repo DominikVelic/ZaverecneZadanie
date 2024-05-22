@@ -38,6 +38,11 @@ if (file_exists($file)) {
                     </ul>
                     <ul class="navbar-nav ms-auto">
                         <?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) : ?>
+                            <?php if (isset($_SESSION["admin"]) && $_SESSION["admin"] === true) : ?>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="/2FA/admin.php"><?php echo $lang['admin_text']; ?></a>
+                                </li>
+                            <?php endif; ?>
                             <!-- Logout Button -->
                             <li class="nav-item">
                                 <a class="nav-link" href="/2FA/add.php"><?php echo $lang['create_question_text']; ?></a>

@@ -1,12 +1,10 @@
 <?php
 session_start();
 
-
 if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) {
     header("location: /index.php"); // Already logged in
     exit;
 }
-
 
 require_once '../.config.php';
 
@@ -18,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Prepare SQL query to select user based on login or email
-    $sql = "SELECT id, fullname, email, login, password, created_at, 2fa_code FROM users WHERE login = ? OR email = ?";
+    $sql = "SELECT id, fullname, email, login, password, created_at, 2fa_code, admin FROM users WHERE login = ? OR email = ?";
     $stmt = $conn->prepare($sql);
 
     // Bind parameters
@@ -28,7 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $stmt->store_result();
         if ($stmt->num_rows == 1) {
             // User exists, verify password
-            $stmt->bind_result($user_id, $fullname, $email, $login, $hashed_password, $created_at, $two_fa_code);
+            $stmt->bind_result($user_id, $fullname, $email, $login, $hashed_password, $created_at, $two_fa_code, $admin);
             $stmt->fetch();
 
             if (password_verify($_POST['password'], $hashed_password)) {
@@ -44,6 +42,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     $_SESSION["fullname"] = $fullname;
                     $_SESSION["email"] = $email;
                     $_SESSION["created_at"] = $created_at;
+                    $_SESSION["admin"] = !is_null($admin) && $admin ? true : false;
 
                     echo "success"; // Indicate successful login
                     exit;
@@ -68,7 +67,6 @@ require "../header.php";
 ?>
 
 <body>
-
     <main>
         <div class="form-container">
             <h1><?php echo $lang['login_text']; ?></h1>
@@ -121,5 +119,4 @@ require "../header.php";
     </script>
     <?php require "../footer.php" ?>
 </body>
-
 </html>

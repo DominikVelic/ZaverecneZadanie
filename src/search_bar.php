@@ -21,6 +21,8 @@
 </div>
 
 <script>
+    var question;
+
     document.getElementById("search_form").addEventListener("submit", function(event) {
         event.preventDefault();
 
@@ -28,7 +30,7 @@
 
         // Make AJAX request to fetch data from PHP script
         $.ajax({
-            url: 'questions/get_question.php',
+            url: '/questions/get_question.php',
             method: 'GET',
             data: {
                 code: code,
@@ -40,8 +42,9 @@
                     return;
                 }
 
-                var question = response.question;
+                question = response.question;
 
+                showQuestion(question);
             },
             error: function(xhr, status, error) {
                 // Handle AJAX error

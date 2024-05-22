@@ -3,12 +3,33 @@ body {
     height: 100vh;
     margin: 0 auto;
 }
+
 .form-container {
-            width: 400px;
-            padding: 20px;
-            border: 2px solid #000000;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            margin: 50px auto;
-            background-color: #fff;
-        }
+    width: 400px;
+    padding: 20px;
+    border: 2px solid #000000;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: 50px auto;
+    background-color: #fff;
+}
+
+
+.shadow {
+    border: 2px solid #000000;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.clean-a a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+}
+
+.round-background {
+    border-radius: 15px;
+    /* Adjust the value as needed for the desired roundness */
+    background-color: rgb(240, 240, 240, 0.5);
+    /* Adjust the background color as needed */
+    padding: 1rem;
+}
