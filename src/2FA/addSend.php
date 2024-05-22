@@ -2,6 +2,7 @@
 
 session_start();
 
+
 if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
     header("Location: index.php");
     exit;
@@ -25,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $subject = isset($_POST['subject']) ? $_POST['subject'] : null;
     $answer = isset($_POST['answer']) ? $_POST['answer'] : array();
 } else {
+    
     echo json_encode(array('POST' => false));
     header("Location: addForm.php");
     exit();
