@@ -26,6 +26,7 @@ $lang = array(
     'search_bar_text' => 'Searching',
     'enter_5-digit_code_text' => "Enter a 5-digit code",
     'logged_in_text' => 'You are logged in',
+
     'create_question_text' => 'Create question',
     'google_login_text' => 'Google login',
     'enter_name_here_text' => 'Please enter name here',
