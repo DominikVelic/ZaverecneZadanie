@@ -33,8 +33,9 @@ $lang = array(
     'enter_name_here_text' => 'Prosím zadajte meno',
     'scan_qr_code_here_text' => 'Naskenujte Qr kód do aplikácie Google Authentificator',
     'you_can_login_now_text' => 'Teraz sa môžete prihlásiť',
-    'admin_text' => 'Administrácia'
-
+    'admin_text' => 'Administrácia',
+    'full_name_text' => 'Celé meno',
+    'created_at_text' => 'Dátum vytvorenia'
     // Tuto dat slovenske preklady
     // Nje 
 );

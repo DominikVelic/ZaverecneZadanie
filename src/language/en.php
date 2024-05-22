@@ -32,6 +32,9 @@ $lang = array(
     'enter_name_here_text' => 'Please enter name here',
     'scan_qr_code_here_text' => 'Scan the Qr code into the Google Authentificator app',
     'you_can_login_now_text' => 'You can login now',
-    'admin_text' => 'Administration'
+    'admin_text' => 'Administration',
+    'full_name_text' => 'Full name',
+    'created_at_text' => 'Created at'
+
     // tuto anglicke preklady
 );
