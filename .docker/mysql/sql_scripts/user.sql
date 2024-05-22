@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1deb1+jammy2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Generation Time: Mar 10, 2023 at 08:48 AM
--- Server version: 8.0.32-0ubuntu0.22.04.2
--- PHP Version: 8.2.3
+-- Host: db
+-- Generation Time: May 22, 2024 at 06:53 PM
+-- Server version: 8.0.32
+-- PHP Version: 8.2.8
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,14 +29,18 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `users` (
   `id` int UNSIGNED NOT NULL,
-  `fullname` varchar(128) COLLATE utf8mb4_slovak_ci NOT NULL,
-  `email` varchar(128) COLLATE utf8mb4_slovak_ci NOT NULL,
-  `login` varchar(32) COLLATE utf8mb4_slovak_ci NOT NULL,
-  `password` varchar(256) COLLATE utf8mb4_slovak_ci NOT NULL,
-  `2fa_code` varchar(32) COLLATE utf8mb4_slovak_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `fullname` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_slovak_ci NOT NULL,
+  `email` varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_slovak_ci NOT NULL,
+  `login` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_slovak_ci NOT NULL,
+  `password` varchar(256) CHARACTER SET utf8mb4 COLLATE utf8mb4_slovak_ci NOT NULL,
+  `2fa_code` varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_slovak_ci NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `admin` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_slovak_ci;
 
+--
+-- Dumping data for table `users`
+--
 --
 -- Indexes for dumped tables
 --
@@ -57,7 +61,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
