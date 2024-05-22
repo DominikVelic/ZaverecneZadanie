@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: May 22, 2024 at 03:09 PM
+-- Generation Time: May 22, 2024 at 09:16 PM
 -- Server version: 8.0.32
 -- PHP Version: 8.2.8
 
@@ -36,6 +36,13 @@ CREATE TABLE `answers` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 --
+-- Dumping data for table `answers`
+--
+
+INSERT INTO `answers` (`id`, `answer`, `appearance`, `count`, `question_id`) VALUES
+(1, 'ojhih', NULL, 2, 1);
+
+--
 -- Indexes for dumped tables
 --
 
@@ -54,7 +61,7 @@ ALTER TABLE `answers`
 -- AUTO_INCREMENT for table `answers`
 --
 ALTER TABLE `answers`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
