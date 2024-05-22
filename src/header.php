@@ -1,7 +1,7 @@
 <?php
 
 
-$file = __DIR__ . "/language/language_change.php";
+$file = __DIR__ . "/language/language_file.php";
 
 if (file_exists($file)) {
     include($file);
