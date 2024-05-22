@@ -43,11 +43,13 @@ for (;;) {
     if ($result->num_rows == 0) {
         break;
     }
+
+    $count = 0;
 }
 
     $query = "INSERT INTO questions (question,subject,closed,code) VALUES (?,?,?,?)";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("ssii", $question, $subject, 0, $random);
+    $stmt->bind_param("ssii", $question, $subject, $count, $random);
     if ($stmt->execute()) {
         echo json_encode(array("Execute succesful"));
     } else {
@@ -67,7 +69,7 @@ for ($i = 0; $i < count($categories); $i++) {
         $prizeDetailId = null;
         $query = "INSERT INTO answers (answer,count,question_id) VALUES (?,?,?)";
         $stmt = $conn->prepare($query);
-        $stmt->bind_param("sii", $answer[$i], 0, $result);
+        $stmt->bind_param("sii", $answer[$i], $count, $result);
         if ($stmt->execute()) {
             echo json_encode(array("Execute succesful"));
         } else {
