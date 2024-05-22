@@ -1,27 +1,7 @@
 <?php
 
-//require_once '/var/www/node118.webte.fei.stuba.sk/115370_velic_z1/.config.php';
-
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-
-
-// session_start();
-
-// if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
-//     header("Location: index.php");
-//     exit;
-// }
-
-
-// // Establish connection to the database
-// $link = mysqli_connect($hostname, $username, $password, $dbname);
-
-// // Check if the connection was successful
-// if ($link->connect_errno) {
-//     echo "Failed to connect to MySQL: " . $link->connect_error;
-//     exit();
-// }
 
 ?>
 
@@ -91,24 +71,23 @@ ini_set('display_errors', 1);
         <div class="row">
             <div class="col-12 clean-a pb-5">
                 <a href="index.php" class="me-5">Home</a>
-                <a href="restricted.php">Restricted site</a>
             </div>
         </div>
 
         <div class="row">
             <div class="card col-12 mb-5 bg-dark text-white">
                 <div class="card-body m-5">
-                    <form action="add.php" method="post">
+                    <form action="addSend.php" method="post">
                         <div class="card-text">
                             <div id="card-inside">
                                 <div class="form-group mb-3">
-                                    <label for="name"><strong>Otázka:</strong></label>
-                                    <input type="text" class="form-control" id="name" name="name">
+                                    <label for="question"><strong>Otázka:</strong></label>
+                                    <input type="text" class="form-control" id="question" name="question">
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label for="surname"><strong>Predmet:</strong></label>
-                                    <input type="text" class="form-control" id="surname" name="surname">
+                                    <label for="subject"><strong>Predmet:</strong></label>
+                                    <input type="text" class="form-control" id="subject" name="subject">
                                 </div>
 
                                 <div id="prize_container">
@@ -116,7 +95,7 @@ ini_set('display_errors', 1);
                                         <div class="card-text">
                                             <div class="form-group mb-3">
                                                 <label for="year"><strong>Odpoveď:</strong></label>
-                                                <input type="text" class="form-control" id="answer" name="answers[]" required>
+                                                <input type="text" class="form-control" id="answer" name="answer[]" required>
                                             </div>
 
                                         </div>

@@ -40,6 +40,9 @@ if (file_exists($file)) {
                         <?php if (isset($_SESSION["loggedin"]) && $_SESSION["loggedin"] === true) : ?>
                             <!-- Logout Button -->
                             <li class="nav-item">
+                                <a class="nav-link" href="/2FA/add.php"><?php echo $lang['create_question_text']; ?></a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="/2FA/password_change.php"><?php echo $lang['password_change_text']; ?></a>
                             </li>
                             <li class="nav-item">

@@ -14,7 +14,10 @@ require "../header.php";
                         <label for="firstname" class="form-label"><?php echo $lang['name_text']; ?></label>
                         <input type="text" class="form-control" name="firstname" id="firstname" placeholder="Erik" required>
                         <div class="invalid-feedback">
-                            <?php echo $lang['invalid_feedback_name'] ?>
+
+               
+                            <?php echo $lang['enter_name_here_text']; ?>
+
                         </div>
                     </div>
                     <div class="mb-3 col">
@@ -23,7 +26,7 @@ require "../header.php";
                     </div>
                 </div>
                 <div class="mb-3">
-                    <label for="email" class="form-label">E-mail:</label>
+                    <label for="email" class="form-label">E-mail</label>
                     <div class="input-group">
                         <div class="input-group-text">@</div>
                         <input type="email" class="form-control" name="email" id="email" placeholder="erik.prdar@example.com" required>
@@ -40,9 +43,12 @@ require "../header.php";
                 <button type="submit" class="btn btn-primary"><?php echo $lang['register_text']; ?></button>
                 <div id="alert" class="alert alert-danger mt-3" style="display: none;" role="alert"></div>
                 <div id="qr_code_container" class="mt-3" style="display: none;">
-                    <p><?php echo $lang['scan_qr_code'] ?></p>
+
+              
+                    <p><?php echo $lang['scan_qr_code_here_text']; ?></p>
                     <img id="qr_code" alt="QR kód pre aplikáciu Authenticator" class="img-fluid">
-                    <p class="mt-3"><?php echo $lang['now_login'] ?><a href="login.php" class="btn btn-primary"><?php echo $lang['login_text'] ?></a></p>
+                    <p class="mt-3"><?php echo $lang['you_can_login_now_text']; ?><a href="login.php" class="btn btn-primary"><?php echo $lang['login_text']; ?></a></p>
+
                 </div>
             </form>
             <p class="mt-3"><?php echo $lang['have_account_text']; ?> <a href="login.php"><?php echo $lang['login_here_text']; ?></a></p>

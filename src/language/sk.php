@@ -27,10 +27,13 @@ $lang = array(
     'search_bar_text' => 'Vyhľadávanie',
     'enter_5-digit_code_text' => "Zadaj  5 číselný kód",
     'logged_in_text' => 'Si teraz prihlasený',
-    'question_head' => 'Otázka: ',
-    'invalid_feedback_name' => 'Prosim zadajte meno',
-    'scan_qr_code' => 'Naskenujte QR kód do aplikácie Authenticator pre 2FA: ',
-    'now_login' => 'Teraz sa môžete prihlásiť: '
+
+    'create_question_text' => 'Vytvor otázku',
+    'google_login_text' => 'Google prihlásenie',
+    'enter_name_here_text' => 'Prosím zadajte meno',
+    'scan_qr_code_here_text' => 'Naskenujte Qr kód do aplikácie Google Authentificator',
+    'you_can_login_now_text' => 'Teraz sa môžete prihlásiť'
+
     // Tuto dat slovenske preklady
     // Nje 
 );
