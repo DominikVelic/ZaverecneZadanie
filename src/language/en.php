@@ -36,6 +36,9 @@ $lang = array(
     'subject' => 'Subject: ',
     'answer' => 'Answer: ',
     'add_answer' => 'Add answer',
-    'send' => 'Send'
+    'send' => 'Send',
+    'full_name_text' => 'Full name',
+    'created_at_text' => 'Created at'
+
     // tuto anglicke preklady
 );

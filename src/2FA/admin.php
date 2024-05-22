@@ -85,10 +85,10 @@ require "../header.php";
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Full Name</th>
+                    <th><?php echo $lang['full_name_text']; ?></th>
                     <th>Email</th>
                     <th>Login</th>
-                    <th>Created At</th>
+                    <th><?php echo $lang['created_at_text']; ?></th>
                     <th>Admin</th>
                     <th>Actions</th>
                 </tr>

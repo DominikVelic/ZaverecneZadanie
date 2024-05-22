@@ -37,8 +37,9 @@ $lang = array(
     'subject' => 'Predmet: ',
     'answer' => 'Odpoveď: ',
     'add_answer' => 'Pridať odpoveď',
-    'send' => 'Odoslať'
-
+    'send' => 'Odoslať',
+    'full_name_text' => 'Celé meno',
+    'created_at_text' => 'Dátum vytvorenia'
     // Tuto dat slovenske preklady
     // Nje 
 );
