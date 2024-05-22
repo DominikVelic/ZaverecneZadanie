@@ -2,6 +2,49 @@
 
 
 require '../header.php';
+require_once '../.config.php';
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+session_start();
+
+if (!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true) {
+    header("Location: index.php");
+    exit;
+}
+
+// Check if the connection was successful
+if ($conn->connect_errno) {
+    echo "Failed to connect to MySQL: " . $conn->connect_error;
+    exit();
+}
+
+// Check if 'id' parameter is set in the URL
+if (isset($_GET['id'])) {
+    // Sanitize input to prevent SQL injection
+    $id = mysqli_real_escape_string($conn, $_GET['id']);
+
+    // Fetch recipient information along with all prize details based on the provided ID
+    $query = "SELECT  a.answer q.id, q.question, q.subject, q.closed, a.answer
+              FROM answers a
+              LEFT JOIN question r ON  a.question_id = q.id
+              WHERE q.id = '$id'";
+
+    $result = mysqli_query($conn, $query);
+
+    if ($result) {
+        // Check if any rows were returned
+        if (mysqli_num_rows($result) > 0) {
+            // Display recipient information
+            $row = mysqli_fetch_assoc($result);
+    } else {
+        echo "Error: " . mysqli_error($conn);
+    }
+} else {
+    echo "No ID provided in the URL.";
+}
+
 ?>
 
 <script>
@@ -44,7 +87,6 @@ require '../header.php';
         <div class="row">
             <div class="col-12 clean-a pb-5">
                 <a href="index.php" class="me-5">Home</a>
-                <a href="restricted.php">Restricted site</a>
             </div>
         </div>
 
@@ -56,32 +98,41 @@ require '../header.php';
                             <div id="card-inside">
                                 <div class="form-group mb-3">
                                     <label for="name"><strong>Otázka:</strong></label>
-                                    <input type="text" class="form-control" id="name" name="name">
+                                    <input type="text" class="form-control" id="question" name="question" value="<?php echo $row['question']; ?>">
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label for="surname"><strong>Predmet:</strong></label>
-                                    <input type="text" class="form-control" id="surname" name="surname">
+                                    <input type="text" class="form-control" id="subject" name="subject"  value="<?php echo $row['subject']; ?>">
                                 </div>
 
-                                <div id="prize_container">
+                                <div class="form-group mb-3">
+                                    <label for="surname"><strong>Otvorená:</strong></label>
+                                    <input type="text" class="form-control" id="closed" name="closed"  value="<?php echo $row['closed']; ?>">
+                                </div>
+
+                                <div id="prizes_container">
+                                <?php
+                                do { ?>
+
                                     <div id="prize0" class="card p-2 mb-2 prize-section">
                                         <div class="card-text">
                                             <div class="form-group mb-3">
                                                 <label for="year"><strong>Odpoveď:</strong></label>
-                                                <input type="text" class="form-control" id="answer" name="answers[]" required>
+                                                <input type="text" class="form-control" id="answer" name="answers[]" value="<?php echo $row['answer[]']; ?>" required>
                                             </div>
-
                                         </div>
                                     </div>
-                                </div>
 
+                                <?php
+                                } while ($row = mysqli_fetch_assoc($result));
+
+                                ?>
+
+                                </div>
                                 <br>
                             </div>
-
-                            <button type="button" id="addFields" class="btn btn-success" onclick="addAnswer()">Pridať odpoveď</button>
                             <button type="submit" class="btn btn-primary">Odoslať</button>
-
                         </div>
                     </form>
                 </div>
