@@ -102,13 +102,13 @@ ini_set('display_errors', 1);
                         <div class="card-text">
                             <div id="card-inside">
                                 <div class="form-group mb-3">
-                                    <label for="name"><strong>Otázka:</strong></label>
-                                    <input type="text" class="form-control" id="name" name="name">
+                                    <label for="question"><strong>Otázka:</strong></label>
+                                    <input type="text" class="form-control" id="question" name="question">
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label for="surname"><strong>Predmet:</strong></label>
-                                    <input type="text" class="form-control" id="surname" name="surname">
+                                    <label for="subject"><strong>Predmet:</strong></label>
+                                    <input type="text" class="form-control" id="subject" name="subject">
                                 </div>
 
                                 <div id="prize_container">
@@ -116,7 +116,7 @@ ini_set('display_errors', 1);
                                         <div class="card-text">
                                             <div class="form-group mb-3">
                                                 <label for="year"><strong>Odpoveď:</strong></label>
-                                                <input type="text" class="form-control" id="answer" name="answers[]" required>
+                                                <input type="text" class="form-control" id="answer" name="answer[]" required>
                                             </div>
 
                                         </div>
