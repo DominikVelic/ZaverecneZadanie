@@ -28,4 +28,5 @@ $lang = array(
     'enter_5-digit_code_text' => "Zadaj  5 číselný kód",
     'logged_in_text' => 'Si teraz prihlasený'
     // Tuto dat slovenske preklady
+    // Nje 
 );
