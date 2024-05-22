@@ -91,14 +91,13 @@ ini_set('display_errors', 1);
         <div class="row">
             <div class="col-12 clean-a pb-5">
                 <a href="index.php" class="me-5">Home</a>
-                <a href="restricted.php">Restricted site</a>
             </div>
         </div>
 
         <div class="row">
             <div class="card col-12 mb-5 bg-dark text-white">
                 <div class="card-body m-5">
-                    <form action="add.php" method="post">
+                    <form action="addSend.php" method="post">
                         <div class="card-text">
                             <div id="card-inside">
                                 <div class="form-group mb-3">
