@@ -40,3 +40,20 @@ if (!window.location.href.includes("lang=")) {
     window.location.href = addLangParameter(window.location.href, lang);
   }
 }
+
+function showQuestion(question) {
+  var questionDiv = document.getElementById("question");
+  questionDiv.textContent = question.question;
+  var answersDiv = document.getElementById("answers");
+  question.answers.forEach((answer) => {
+    addAnswer(answersDiv, answer);
+  });
+  document.getElementById("question-cont").style.display = "grid";
+}
+
+function addAnswer(answersDiv, answer) {
+  const newAnswerDiv = document.createElement("div");
+  newAnswerDiv.classList.add("col");
+  newAnswerDiv.textContent = answer.answer;
+  answersDiv.appendChild(newAnswerDiv);
+}

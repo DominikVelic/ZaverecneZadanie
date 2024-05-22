@@ -50,12 +50,12 @@ require '../header.php';
                         <div class="card-text">
                             <div id="card-inside">
                                 <div class="form-group mb-3">
-                                    <label for="question"><strong>Otázka:</strong></label>
+                                    <label for="question"><strong><?php echo $lang['question'] ?></strong></label>
                                     <input type="text" class="form-control" id="question" name="question">
                                 </div>
 
                                 <div class="form-group mb-3">
-                                    <label for="subject"><strong>Predmet:</strong></label>
+                                    <label for="subject"><strong><?php echo $lang['subject'] ?></strong></label>
                                     <input type="text" class="form-control" id="subject" name="subject">
                                 </div>
 
@@ -63,7 +63,7 @@ require '../header.php';
                                     <div id="prize0" class="card p-2 mb-2 prize-section">
                                         <div class="card-text">
                                             <div class="form-group mb-3">
-                                                <label for="year"><strong>Odpoveď:</strong></label>
+                                                <label for="year"><strong><?php echo $lang['answer'] ?></strong></label>
                                                 <input type="text" class="form-control" id="answer" name="answer[]" required>
                                             </div>
 
@@ -74,8 +74,8 @@ require '../header.php';
                                 <br>
                             </div>
 
-                            <button type="button" id="addFields" class="btn btn-success" onclick="addAnswer()">Pridať odpoveď</button>
-                            <button type="submit" class="btn btn-primary">Odoslať</button>
+                            <button type="button" id="addFields" class="btn btn-success" onclick="addAnswer()"><?php echo $lang['add_answer'] ?></button>
+                            <button type="submit" class="btn btn-primary"><?php echo $lang['send'] ?></button>
 
                         </div>
                     </form>

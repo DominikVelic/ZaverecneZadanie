@@ -1,6 +1,10 @@
-<div class="form-container">
-    <h2>
-        <p><?php echo $lang['welcome_text']; ?> <?php echo $_SESSION['fullname'] ?> </p>
-        <p><?php echo $lang['logged_in_text']; ?></p>
-    </h2>
+<div class="container shadow" id='question-cont' style="display: none;">
+    <div class="row">
+        <div class="column" id='question'>
+
+        </div>
+    </div>
+    <div class="row" id='answers'>
+
+    </div>
 </div>
