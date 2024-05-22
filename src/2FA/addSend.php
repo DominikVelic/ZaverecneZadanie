@@ -37,6 +37,7 @@ for (;;) {
     $query = "SELECT * FROM questions WHERE code = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $randomCode);
+    $stmt->execute();
     $result = $stmt->get_result();
 
     if ($result->num_rows == 0) {
@@ -57,6 +58,7 @@ for (;;) {
     $query = "SELECT id FROM questions WHERE code = ?";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("i", $randomCode);
+    $stmt->execute();
     $result = $stmt->get_result();
 
 $j = 0;
