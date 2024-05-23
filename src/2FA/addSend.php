@@ -47,7 +47,7 @@ for (;;) {
     $count = 0;
 }
 
-    $query = "INSERT INTO questions (question,subject,count,code) VALUES (?,?,?,?)";
+    $query = "INSERT INTO questions (question,subject,code) VALUES (?,?,?,?)";
     $stmt = $conn->prepare($query);
     $stmt->bind_param("ssii", $question, $subject, $count, $randomCode);
     if ($stmt->execute()) {
