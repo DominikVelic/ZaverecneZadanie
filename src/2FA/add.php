@@ -7,7 +7,7 @@ require '../header.php';
 <script>
     var prizeCounter = 0;
 
-    function addAnswer() {
+    function addNewAnswer() {
         var container = document.getElementById("prize_container");
         var clone = container.querySelector(".prize-section").cloneNode(true);
 
@@ -74,7 +74,7 @@ require '../header.php';
                                 <br>
                             </div>
 
-                            <button type="button" id="addFields" class="btn btn-success" onclick="addAnswer()"><?php echo $lang['add_answer'] ?></button>
+                            <button type="button" id="addFields" class="btn btn-success" onclick="addNewAnswer()"><?php echo $lang['add_answer'] ?></button>
                             <button type="submit" class="btn btn-primary"><?php echo $lang['send'] ?></button>
 
                         </div>
