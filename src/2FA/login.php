@@ -73,7 +73,7 @@ require "../header.php";
             <form id="login_form" class="needs-validation" novalidate>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control" name="login" id="login" required>
-                    <label for="login" class="form-label"><?php echo $lang['login_text']; ?></label>
+                    <label for="login" class="form-label"><?php echo $lang['login_name_text']; ?></label>
                 </div>
                 <div class="form-floating mb-3">
                     <input type="password" class="form-control" name="password" id="password" required>

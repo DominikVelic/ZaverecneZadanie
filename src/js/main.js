@@ -41,19 +41,67 @@ if (!window.location.href.includes("lang=")) {
   }
 }
 
+// Function to display the question and its answers
 function showQuestion(question) {
   var questionDiv = document.getElementById("question");
-  questionDiv.textContent = question.question;
+  questionDiv.textContent = "Question: " + question.question;
+
   var answersDiv = document.getElementById("answers");
-  question.answers.forEach((answer) => {
+  answersDiv.innerHTML = ""; // Clear previous answers
+  
+  // Loop through each answer and append it to answersDiv
+  question.answers.forEach(function(answer) {
     addAnswer(answersDiv, answer);
   });
+
+  // Show the question container
   document.getElementById("question-cont").style.display = "grid";
 }
 
+// Function to add an answer to the answersDiv
 function addAnswer(answersDiv, answer) {
-  const newAnswerDiv = document.createElement("div");
-  newAnswerDiv.classList.add("col");
-  newAnswerDiv.textContent = answer.answer;
+  var newAnswerDiv = document.createElement("div");
+  newAnswerDiv.classList.add("answer"); // Add a class for styling
+
+  // Create a span element to display the answer and count
+  var answerSpan = document.createElement("span");
+  answerSpan.textContent = "Answer: " + answer.answer + " (Count: " + answer.count + ")";
+  newAnswerDiv.appendChild(answerSpan);
+
+  // Create a button for voting
+  var voteButton = document.createElement("button");
+  voteButton.textContent = "Vote";
+  voteButton.dataset.answerId = answer.id; // Store answer id as a data attribute
+  voteButton.addEventListener("click", voteForAnswer); // Add event listener for voting
+  newAnswerDiv.appendChild(voteButton);
+
   answersDiv.appendChild(newAnswerDiv);
 }
+// Function to handle voting for an answer
+// Function to handle voting for an answer
+function voteForAnswer(event) {
+  var answerId = event.target.dataset.answerId;
+
+  // Make AJAX request to vote for the answer
+  $.ajax({
+    url: '/questions/vote.php',
+    method: 'POST',
+    data: {
+      answerId: answerId,
+    },
+    dataType: 'json',
+    success: function(response) {
+      if (response.success) {
+        // Update the count displayed on the page
+        var countSpan = event.target.previousSibling.querySelector('span');
+        countSpan.textContent = "Answer: " + response.new_vote_count; // Assuming response key is correct
+      } else {
+        console.error(response.error);
+      }
+    },
+    error: function(xhr, status, error) {
+      // Handle AJAX error
+      console.error(status + ': ' + error);
+    }
+  });
+} 
