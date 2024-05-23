@@ -65,10 +65,8 @@ if ($result->num_rows > 0) {
     $row = $result->fetch_assoc();
     $question_id = $row['id'];
 
-    // Now use the $question_id in the INSERT query
-    for ($i = 0; $i < count($answer); $i++) {
-        $count = 0;  // Assuming $count should be initialized to 0
-        $query = "INSERT INTO answers (answer, count, question_id) VALUES (?, ?, ?)";
+for ($i = 0; $i < count($answer); $i++) {
+        $query = "INSERT INTO answers (answer,count,question_id) VALUES (?,?,?)";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("sii", $answer[$i], $count, $question_id);
 
