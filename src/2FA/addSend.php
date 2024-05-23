@@ -49,7 +49,7 @@ for (;;) {
 
     $query = "INSERT INTO questions (question,subject,code) VALUES (?,?,?)";
     $stmt = $conn->prepare($query);
-    $stmt->bind_param("ssii", $question, $subject, $count, $randomCode);
+    $stmt->bind_param("ssi", $question, $subject, $randomCode);
     if ($stmt->execute()) {
         echo json_encode(array("Execute succesful"));
     } else {
