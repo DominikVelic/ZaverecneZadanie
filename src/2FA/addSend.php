@@ -24,7 +24,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 
-$characters = '0123456789';
+$characters = '123456789';
 $charactersLength = strlen($characters);
 
 for (;;) {
@@ -66,7 +66,6 @@ for (;;) {
 $j = 0;
 
 for ($i = 0; $i < count($answer); $i++) {
-        $prizeDetailId = null;
         $query = "INSERT INTO answers (answer,count,question_id) VALUES (?,?,?)";
         $stmt = $conn->prepare($query);
         $stmt->bind_param("sii", $answer[$i], $count, $result);
