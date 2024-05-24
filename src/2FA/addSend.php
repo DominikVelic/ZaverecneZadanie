@@ -44,9 +44,9 @@ for (;;) {
     }
 }
 
-$query = "INSERT INTO questions (question,subject,code) VALUES (?,?,?)";
+$query = "INSERT INTO questions (question,subject,code,user) VALUES (?,?,?,?)";
 $stmt = $conn->prepare($query);
-$stmt->bind_param("sss", $question, $subject, $randomCode);
+$stmt->bind_param("ssss", $question, $subject, $randomCode, $_SESSION["login"]);
 if ($stmt->execute()) {
     $response['message'] = "Execute successful";
 } else {
@@ -64,6 +64,8 @@ if ($result->num_rows > 0) {
     // Fetch the ID from the result set
     $row = $result->fetch_assoc();
     $question_id = $row['id'];
+
+    $count=0;
 
 for ($i = 0; $i < count($answer); $i++) {
         $query = "INSERT INTO answers (answer,count,question_id) VALUES (?,?,?)";
