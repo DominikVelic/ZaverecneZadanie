@@ -4,7 +4,7 @@
 $lang = array(
     "welcome" => "Vitajte na našej stránke!",
     "about" => "O nás",
-    "footer_text" => "Webte Zaverecne zadanie",
+    "footer_text" => "Áron Jeszó, Erik Vladár, Dominik Velič",
     'language_dropdown' => 'Jazyk',
     "header_title" => "Online hlasovací systém",
     'home_link_text' => "Domov",
