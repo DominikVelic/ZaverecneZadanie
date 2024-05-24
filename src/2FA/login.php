@@ -90,7 +90,7 @@ require "../header.php";
                     </div>
                 </div>
             </form>
-            <p><?php echo $lang['make_account_here_text']; ?> <a href="register.php"><?php echo $lang['register_here_text']; ?>.</a></p>
+            <p><?php echo $lang['make_account_here_text']; ?> <a href="register_form.php"><?php echo $lang['register_here_text']; ?>.</a></p>
             <div id="login_error" class="alert alert-danger mt-3" role="alert" style="display: none;"></div>
         </div>
     </main>
@@ -119,4 +119,5 @@ require "../header.php";
     </script>
     <?php require "../footer.php" ?>
 </body>
+
 </html>

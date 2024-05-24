@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: May 22, 2024 at 09:16 PM
+-- Generation Time: May 24, 2024 at 06:07 PM
 -- Server version: 8.0.32
 -- PHP Version: 8.2.8
 
@@ -32,16 +32,10 @@ CREATE TABLE `questions` (
   `question` varchar(512) NOT NULL,
   `subject` varchar(255) NOT NULL,
   `closed` tinyint(1) DEFAULT NULL,
-  `code` int NOT NULL,
-  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `code` varchar(20) NOT NULL,
+  `date_created` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `user` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-
---
--- Dumping data for table `questions`
---
-
-INSERT INTO `questions` (`id`, `question`, `subject`, `closed`, `code`, `date_created`) VALUES
-(1, 'shy are yo iu?', 'awpidj', NULL, 11111, '2024-05-22 21:10:51');
 
 --
 -- Indexes for dumped tables
@@ -61,7 +55,7 @@ ALTER TABLE `questions`
 -- AUTO_INCREMENT for table `questions`
 --
 ALTER TABLE `questions`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
