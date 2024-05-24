@@ -48,60 +48,77 @@ function showQuestion(question) {
 
   var answersDiv = document.getElementById("answers");
   answersDiv.innerHTML = ""; // Clear previous answers
-  
+
   // Loop through each answer and append it to answersDiv
-  question.answers.forEach(function(answer) {
+  question.answers.forEach(function (answer) {
     addAnswer(answersDiv, answer);
   });
 
   // Show the question container
   document.getElementById("question-cont").style.display = "grid";
+  // hide error message if shown before
+  document.getElementById("error-message").style.display = "none";
 }
 
 // Function to add an answer to the answersDiv
 function addAnswer(answersDiv, answer) {
   var newAnswerDiv = document.createElement("div");
-  newAnswerDiv.classList.add("answer"); // Add a class for styling
+  newAnswerDiv.classList.add("col-md-3", "answer"); // Use Bootstrap classes for styling
+  newAnswerDiv.dataset.answerId = answer.id; // Store the answer ID for voting
 
   // Create a span element to display the answer and count
   var answerSpan = document.createElement("span");
-  answerSpan.textContent = "Answer: " + answer.answer + " (Count: " + answer.count + ")";
+  answerSpan.textContent =
+    "Answer: " + answer.answer + " (Count: " + answer.count + ")";
   newAnswerDiv.appendChild(answerSpan);
 
-  // Create a button for voting
-  var voteButton = document.createElement("button");
-  voteButton.textContent = "Vote";
-  voteButton.dataset.answerId = answer.id; // Store answer id as a data attribute
-  voteButton.addEventListener("click", voteForAnswer); // Add event listener for voting
-  newAnswerDiv.appendChild(voteButton);
+  // Add click event listener for voting
+  newAnswerDiv.addEventListener("click", voteForAnswer);
 
   answersDiv.appendChild(newAnswerDiv);
 }
-// Function to handle voting for an answer
+
 // Function to handle voting for an answer
 function voteForAnswer(event) {
   var answerId = event.target.dataset.answerId;
 
   // Make AJAX request to vote for the answer
   $.ajax({
-    url: '/questions/vote.php',
-    method: 'POST',
-    data: {
-      answerId: answerId,
-    },
-    dataType: 'json',
-    success: function(response) {
+    url: "/questions/vote.php",
+    method: "POST",
+    data: { answerId: answerId },
+    dataType: "json",
+    success: function (response) {
       if (response.success) {
         // Update the count displayed on the page
-        var countSpan = event.target.previousSibling.querySelector('span');
-        countSpan.textContent = "Answer: " + response.new_vote_count; // Assuming response key is correct
+        var answerSpan = event.target.querySelector("span");
+        if (answerSpan) {
+          var currentCountText =
+            answerSpan.textContent.match(/Count: (\d+)/)[1];
+          var currentCount = parseInt(currentCountText);
+          answerSpan.textContent = answerSpan.textContent.replace(
+            /Count: \d+/,
+            "Count: " + (currentCount + 1)
+          );
+
+          // Clear any previous error message
+          var errorMessageElement = document.getElementById("error-message");
+          errorMessageElement.textContent = "";
+          errorMessageElement.style.display = "none";
+        }
       } else {
-        console.error(response.error);
+        // Display the error message
+        var errorMessageElement = document.getElementById("error-message");
+        errorMessageElement.textContent = response.error;
+        errorMessageElement.style.display = "block";
       }
     },
-    error: function(xhr, status, error) {
+    error: function (xhr, status, error) {
       // Handle AJAX error
-      console.error(status + ': ' + error);
-    }
+      var errorMessage = status + ": " + error;
+      var errorMessageElement = document.getElementById("error-message");
+      errorMessageElement.textContent = errorMessage;
+      errorMessageElement.style.display = "block";
+    },
   });
-} 
+}
