@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         $g2fa = new PHPGangsta_GoogleAuthenticator();
         $user_secret = $g2fa->createSecret();
-        $codeURL = $g2fa->getQRCodeGoogleUrl('Nobel Prizes', $user_secret);
+        $codeURL = $g2fa->getQRCodeGoogleUrl('Vote Page', $user_secret);
 
         $stmt = $conn->prepare($sql);
         $stmt->bind_param("sssss", $fullname, $login, $email, $hashed_password, $user_secret);

@@ -3,7 +3,7 @@
 $lang = array(
     "welcome" => "Welcome to our website!",
     "about" => "About Us",
-    "footer_text" => "Final assignment",
+    "footer_text" => "Áron Jeszó, Erik Vladár, Dominik Velič",
     'language_dropdown' => 'Language',
     "header_title" => "Online voting system",
     'home_link_text' => "Home",
