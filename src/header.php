@@ -24,11 +24,6 @@ if (file_exists($file)) {
     <link rel="stylesheet" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.css" />
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
     <link rel="stylesheet" href="/css/main.css">
-
-
-    
-
-    
 </head>
 
 <body>
