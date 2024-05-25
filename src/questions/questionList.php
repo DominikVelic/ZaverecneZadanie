@@ -34,6 +34,7 @@ require '../header.php';
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo $lang['close_text'] ?></button>
         </div>
+
       </div>
     </div>
   </div>
@@ -42,7 +43,8 @@ require '../header.php';
       <div class="col">
         <h1><?php echo $lang['questions_dt'] ?></h1>
       </div>
-    </div>
+
+      </div>
     <div class="row">
       <table id="questions" class="compact stripe">
         <thead>
@@ -122,6 +124,7 @@ require '../header.php';
       });
     });
     $('#questions').on('click', '.show-qr-code', function() {
+
       var qrData = $(this).data('qr');
       $('#qrCodeContainer').empty();
       new QRCode(document.getElementById('qrCodeContainer'), qrData);
@@ -129,6 +132,7 @@ require '../header.php';
     // Add custom CSS to center row data and increase font size
     $('#questions').css('text-align', 'center');
     $('#questions th, #questions td').css('font-size', '16px'); // Adjust font size as needed
+
   </script>
 </body>
 
