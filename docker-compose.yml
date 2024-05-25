@@ -3,9 +3,12 @@ services:
     image: nginx:1.21
     ports:
       - 90:80
+      # - 100:443
     volumes:
       - ./src:/var/www/php
       - ./.docker/nginx:/etc/nginx/conf.d
+      # - ./.docker/nginx/ssl/certs/webte_fei_stuba_sk.pem:/etc/ssl/certs/webte_fei_stuba_sk.pem
+      # - ./.docker/nginx/ssl/private/webte.fei.stuba.sk.key:/etc/ssl/private/webte.fei.stuba.sk.key
     depends_on:
       - php
       - db
