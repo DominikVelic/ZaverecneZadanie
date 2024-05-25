@@ -20,6 +20,10 @@ if (file_exists($file)) {
     <title>Document</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.1/css/dataTables.dataTables.css" />
+
 </head>
 
 <body>
@@ -45,6 +49,9 @@ if (file_exists($file)) {
                             <?php endif; ?>
                             <!-- Logout Button -->
                             <li class="nav-item">
+                                <a class="nav-link" href="/questions/questionList.php"><?php echo $lang['show_questions_text']; ?></a>
+                            </li>
+                            <li class="nav-item">
                                 <a class="nav-link" href="/2FA/add.php"><?php echo $lang['create_question_text']; ?></a>
                             </li>
                             <li class="nav-item">
@@ -54,6 +61,9 @@ if (file_exists($file)) {
                                 <a class="nav-link" href="/2FA/logout.php"><?php echo $lang['logout_text']; ?></a>
                             </li>
                         <?php else : ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/questions/questionList.php"><?php echo $lang['show_questions_text']; ?></a>
+                            </li>
                             <!-- Login Button -->
                             <li class="nav-item">
                                 <a class="nav-link" href="/2FA/login.php"><?php echo $lang['login_text']; ?></a>

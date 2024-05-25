@@ -38,7 +38,7 @@ $lang = array(
     'add_answer' => 'Add answer',
     'send' => 'Send',
     'full_name_text' => 'Full name',
-    'created_at_text' => 'Created at'
-
+    'created_at_text' => 'Created at',
+    'show_questions_text' => 'Show all questions'
     // tuto anglicke preklady
 );
