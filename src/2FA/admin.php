@@ -90,7 +90,7 @@ require "../header.php";
                     <th>Login</th>
                     <th><?php echo $lang['created_at_text']; ?></th>
                     <th>Admin</th>
-                    <th>Actions</th>
+                    <th><?php echo $lang['actions_text'] ?></th>
                 </tr>
             </thead>
             <tbody>
@@ -111,14 +111,14 @@ require "../header.php";
                                 </form>
                                 <!-- Update Password Form -->
                                 <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updatePasswordModal" data-user-id="<?php echo $row['id']; ?>" data-user-name="<?php echo htmlspecialchars($row['fullname']); ?>">
-                                    Update Password
+                                    <?php echo $lang['update_password_text'] ?>
                                 </button>
                             </td>
                         </tr>
                     <?php endwhile; ?>
                 <?php else : ?>
                     <tr>
-                        <td colspan="7" class="text-center">No users found.</td>
+                        <td colspan="7" class="text-center"><?php echo $lang['no_users_found_text'] ?></td>
                     </tr>
                 <?php endif; ?>
             </tbody>
@@ -131,19 +131,19 @@ require "../header.php";
             <div class="modal-content">
                 <form method="POST">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="updatePasswordModalLabel">Update Password</h5>
+                        <h5 class="modal-title" id="updatePasswordModalLabel"><?php echo $lang['update_password_text'] ?></h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
                         <input type="hidden" name="update_password_user_id" id="update_password_user_id">
                         <div class="mb-3">
-                            <label for="new_password" class="form-label">New Password</label>
+                            <label for="new_password" class="form-label"><?php echo $lang['new_password_text'] ?></label>
                             <input type="password" class="form-control" id="new_password" name="new_password" required>
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" class="btn btn-primary">Update Password</button>
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"><?php echo $lang['close_text'] ?></button>
+                        <button type="submit" class="btn btn-primary"><?php echo $lang['update_password_text'] ?></button>
                     </div>
                 </form>
             </div>

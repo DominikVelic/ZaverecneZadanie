@@ -44,7 +44,7 @@ if (!window.location.href.includes("lang=")) {
 // Function to display the question and its answers
 function showQuestion(question) {
   var questionDiv = document.getElementById("question");
-  questionDiv.textContent = "Question: " + question.question;
+  questionDiv.textContent = question.question;
 
   var answersDiv = document.getElementById("answers");
   answersDiv.innerHTML = ""; // Clear previous answers
@@ -68,8 +68,7 @@ function addAnswer(answersDiv, answer) {
 
   // Create a span element to display the answer and count
   var answerSpan = document.createElement("span");
-  answerSpan.textContent =
-    "Answer: " + answer.answer + " (Count: " + answer.count + ")";
+  answerSpan.textContent = answer.answer + " (Count: " + answer.count + ")";
   newAnswerDiv.appendChild(answerSpan);
 
   // Add click event listener for voting

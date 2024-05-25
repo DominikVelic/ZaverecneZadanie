@@ -21,20 +21,20 @@ require '../header.php';
   <div class="container">
     <div class="row">
       <div class="col">
-        <h1>Questions</h1>
+        <h1><?php echo $lang['questions_dt'] ?></h1>
       </div>
     </div>
     <div class="row">
       <table id="questions" class="compact stripe">
         <thead>
           <tr>
-            <th>id</th>
-            <th>question</th>
-            <th>subject</th>
-            <th>date_created</th>
-            <th>user</th>
-            <th>code</th>
-            <th>QR code</th>
+            <th>ID</th>
+            <th><?php echo $lang['question_dt'] ?></th>
+            <th><?php echo $lang['subject_dt'] ?></th>
+            <th><?php echo $lang['date_created_dt'] ?></th>
+            <th><?php echo $lang['user_dt'] ?></th>
+            <th><?php echo $lang['code_dt'] ?></th>
+            <th><?php echo $lang['qr_code_dt'] ?></th>
           </tr>
         </thead>
         <tbody>
@@ -97,11 +97,23 @@ require '../header.php';
             var data = this.data();
             var qrCodeId = 'qrcode-' + rowIdx;
             var qrCodeUrl = '/index.php/' + data.code;
+
+            // Clear existing QR code if it exists
+            var existingQRCode = document.getElementById(qrCodeId);
+            if (existingQRCode) {
+              existingQRCode.innerHTML = ''; // Clear the contents of the existing element
+            }
+
+            // Create new QR code
             new QRCode(document.getElementById(qrCodeId), qrCodeUrl);
           });
         }
       });
     });
+
+    // Add custom CSS to center row data and increase font size
+    $('#questions').css('text-align', 'center');
+    $('#questions th, #questions td').css('font-size', '16px'); // Adjust font size as needed
   </script>
 </body>
 
