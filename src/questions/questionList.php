@@ -78,7 +78,7 @@ require '../header.php';
             data: 'code',
             visible: true,
             render: function(data, type, row, meta) {
-              return '<a href="/' + row.code + '" class="btn btn-info">' + data + '</a>';
+              return '<a href="/index.php/' + encodeURIComponent(row.code) + '" class="btn btn-info">' + data + '</a>';
             }
           },
           {
@@ -96,7 +96,7 @@ require '../header.php';
           api.rows().every(function(rowIdx, tableLoop, rowLoop) {
             var data = this.data();
             var qrCodeId = 'qrcode-' + rowIdx;
-            var qrCodeUrl = '/' + data.code;
+            var qrCodeUrl = '/index.php/' + data.code;
             new QRCode(document.getElementById(qrCodeId), qrCodeUrl);
           });
         }

@@ -122,3 +122,55 @@ function voteForAnswer(event) {
     },
   });
 }
+
+function fetchQuestion(code) {
+  if (!code.match(/^\d{5}$/)) {
+    console.error("Invalid code format");
+    return;
+  }
+
+  // Make AJAX request to fetch data from PHP script
+  $.ajax({
+    url: "/questions/get_question.php",
+    method: "GET",
+    data: { code: code },
+    dataType: "json",
+    success: function (response) {
+      if (response.error) {
+        console.error(response.error);
+        return;
+      }
+      question = response.question;
+      showQuestion(question);
+    },
+    error: function (xhr, status, error) {
+      // Handle AJAX error
+      console.error(status + ": " + error);
+    },
+  });
+}
+
+function getCodeFromUrl() {
+  const url = new URL(window.location.href);
+  const pathSegments = url.pathname.split("/"); // Split the path into segments
+  const potentialCode = pathSegments[pathSegments.length - 1]; // Get the last segment
+
+  // Check if the last segment is a valid code
+  if (potentialCode.match(/^\d{5}$/)) {
+    return potentialCode; // Return the code if it's valid
+  }
+
+  // If the last segment is not a valid code, check query parameters
+  const urlParams = new URLSearchParams(url.search);
+  const code = urlParams.get("code");
+
+  // Return the code if it's valid, otherwise return null
+  return code && code.match(/^\d{5}$/) ? code : null;
+}
+
+function clearCodeFromUrl() {
+  const url = new URL(window.location.href);
+  const pathSegments = url.pathname.split("/"); // Split the path into segments
+  const newPath = pathSegments.slice(0, -1).join("/") + "/"; // Remove the last segment (the code)
+  history.replaceState(null, null, newPath + url.search); // Update the URL without the code
+}
