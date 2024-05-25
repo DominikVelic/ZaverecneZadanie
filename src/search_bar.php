@@ -21,36 +21,20 @@
 </div>
 
 <script>
-    var question;
-
     document.getElementById("search_form").addEventListener("submit", function(event) {
         event.preventDefault();
-
         var code = $('#code').val();
+        fetchQuestion(code);
 
-        // Make AJAX request to fetch data from PHP script
-        $.ajax({
-            url: '/questions/get_question.php',
-            method: 'GET',
-            data: {
-                code: code,
-            },
-            dataType: 'json',
-            success: function(response) {
-                if (response.error) {
-                    console.error(response.error);
-                    return;
-                }
+        // Clear the code from the URL path
+        clearCodeFromUrl();
+    });
 
-                question = response.question;
-
-                showQuestion(question);
-            },
-            error: function(xhr, status, error) {
-                // Handle AJAX error
-                console.error(status + ': ' + error);
-            }
-        });
-
-    })
+    document.addEventListener('DOMContentLoaded', function() {
+        const codeFromUrl = getCodeFromUrl();
+        if (codeFromUrl) {
+            document.getElementById('code').value = codeFromUrl;
+            fetchQuestion(codeFromUrl);
+        }
+    });
 </script>
