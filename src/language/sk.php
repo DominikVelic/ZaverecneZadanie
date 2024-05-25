@@ -41,6 +41,16 @@ $lang = array(
     'full_name_text' => 'Celé meno',
     'created_at_text' => 'Dátum vytvorenia',
     'show_questions_text' => 'Zobraziť všetky otázky',
-    // Tuto dat slovenske preklady
-    // Nje 
+    'actions_text' => 'Akcie',
+    'update_password_text' => 'Aktualizovať heslo',
+    'new_password_text' => 'Nové heslo',
+    'close_text' => 'Zatvoriť',
+    'no_users_found_text' => 'Žiadny použivatelia najdení',
+    'questions_dt' => 'Otázky',
+    'question_dt' => 'Otázka',
+    'subject_dt' => 'Predmet',
+    'date_created_dt' => 'Dátum vytvorenia',
+    'user_dt' => 'Použivateľ',
+    'code_dt' => 'Kód',
+    'qr_code_dt' => 'QR Kód'
 );

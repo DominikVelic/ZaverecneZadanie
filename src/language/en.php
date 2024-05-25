@@ -39,6 +39,17 @@ $lang = array(
     'send' => 'Send',
     'full_name_text' => 'Full name',
     'created_at_text' => 'Created at',
-    'show_questions_text' => 'Show all questions'
-    // tuto anglicke preklady
+    'show_questions_text' => 'Show all questions',
+    'actions_text' => 'Actions',
+    'update_password_text' => 'Update password',
+    'new_password_text' => 'New password',
+    'close_text' => 'Close',
+    'no_users_found_text' => 'No users found',
+    'questions_dt' => 'Questions',
+    'question_dt' => 'Question',
+    'subject_dt' => 'Subject',
+    'date_created_dt' => 'Date Created',
+    'user_dt' => 'User',
+    'code_dt' => 'Code',
+    'qr_code_dt' => 'QR Code'
 );
