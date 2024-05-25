@@ -16,8 +16,54 @@ $database = json_encode($sqlData);
 require '../header.php';
 
 ?>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DataTables QR Code Modal Example</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+
+<style>
+    #qrCodeContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+    }
+    .modal-body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 300px; /* Adjust as needed */
+    }
+  </style>
 
 <body>
+<div class="modal fade" id="qrModal" tabindex="-1" role="dialog" aria-labelledby="qrModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="qrModalLabel">QR Code</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="qrCodeContainer"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
   <div class="container">
     <div class="row">
       <div class="col">
@@ -86,7 +132,7 @@ require '../header.php';
             visible: true,
             render: function(data, type, row, meta) {
               var qrCodeId = 'qrcode-' + meta.row; // Unique ID for each QR code
-              return `<div id="${qrCodeId}" class="qrcode"></div>`;
+              return `<button class="btn btn-primary show-qr-code" data-qr="${data}" data-toggle="modal" data-target="#qrModal">Show QR Code</button>`;
             }
           }
         ],
@@ -102,6 +148,11 @@ require '../header.php';
         }
       });
     });
+    $('#questions').on('click', '.show-qr-code', function() {
+        var qrData = $(this).data('qr');
+        $('#qrCodeContainer').empty();
+        new QRCode(document.getElementById('qrCodeContainer'), qrData);
+      });
   </script>
 </body>
 
