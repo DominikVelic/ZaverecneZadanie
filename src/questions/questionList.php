@@ -50,7 +50,7 @@ require '../header.php';
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="qrModalLabel">QR Code</h5>
+        <h5 class="modal-title" id="qrModalLabel"><?php echo $lang['qr_code_dt'] ?></h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -59,7 +59,7 @@ require '../header.php';
         <div id="qrCodeContainer"></div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo $lang['close_text'] ?></button>
       </div>
     </div>
   </div>
@@ -67,20 +67,20 @@ require '../header.php';
   <div class="container">
     <div class="row">
       <div class="col">
-        <h1>Questions</h1>
+        <h1><?php echo $lang['questions_dt'] ?></h1>
       </div>
-    </div>
+      </div>
     <div class="row">
       <table id="questions" class="compact stripe">
         <thead>
           <tr>
-            <th>id</th>
-            <th>question</th>
-            <th>subject</th>
-            <th>date_created</th>
-            <th>user</th>
-            <th>code</th>
-            <th>QR code</th>
+            <th>ID</th>
+            <th><?php echo $lang['question_dt'] ?></th>
+            <th><?php echo $lang['subject_dt'] ?></th>
+            <th><?php echo $lang['date_created_dt'] ?></th>
+            <th><?php echo $lang['user_dt'] ?></th>
+            <th><?php echo $lang['code_dt'] ?></th>
+            <th><?php echo $lang['qr_code_dt'] ?></th>
           </tr>
         </thead>
         <tbody>
@@ -153,6 +153,8 @@ require '../header.php';
         $('#qrCodeContainer').empty();
         new QRCode(document.getElementById('qrCodeContainer'), qrData);
       });
+      $('#questions').css('text-align', 'center');
+      $('#questions th, #questions td').css('font-size', '16px'); // Adjust font size as needed
   </script>
 </body>
 
