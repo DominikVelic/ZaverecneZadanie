@@ -16,71 +16,44 @@ $database = json_encode($sqlData);
 require '../header.php';
 
 ?>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DataTables QR Code Modal Example</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
-  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-  <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-</head>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-<style>
-    #qrCodeContainer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-    }
-    .modal-body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 300px; /* Adjust as needed */
-    }
-  </style>
 
 <body>
-<div class="modal fade" id="qrModal" tabindex="-1" role="dialog" aria-labelledby="qrModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="qrModalLabel">QR Code</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div id="qrCodeContainer"></div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+  <div class="modal fade" id="qrModal" tabindex="-1" role="dialog" aria-labelledby="qrModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="qrModalLabel"><?php echo $lang['qr_code_dt'] ?></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div id="qrCodeContainer"></div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo $lang['close_text'] ?></button>
+        </div>
       </div>
     </div>
   </div>
-</div>
   <div class="container">
     <div class="row">
       <div class="col">
-        <h1>Questions</h1>
+        <h1><?php echo $lang['questions_dt'] ?></h1>
       </div>
     </div>
     <div class="row">
       <table id="questions" class="compact stripe">
         <thead>
           <tr>
-            <th>id</th>
-            <th>question</th>
-            <th>subject</th>
-            <th>date_created</th>
-            <th>user</th>
-            <th>code</th>
-            <th>QR code</th>
+            <th>ID</th>
+            <th><?php echo $lang['question_dt'] ?></th>
+            <th><?php echo $lang['subject_dt'] ?></th>
+            <th><?php echo $lang['date_created_dt'] ?></th>
+            <th><?php echo $lang['user_dt'] ?></th>
+            <th><?php echo $lang['code_dt'] ?></th>
+            <th><?php echo $lang['qr_code_dt'] ?></th>
           </tr>
         </thead>
         <tbody>
@@ -149,10 +122,13 @@ require '../header.php';
       });
     });
     $('#questions').on('click', '.show-qr-code', function() {
-        var qrData = $(this).data('qr');
-        $('#qrCodeContainer').empty();
-        new QRCode(document.getElementById('qrCodeContainer'), qrData);
-      });
+      var qrData = $(this).data('qr');
+      $('#qrCodeContainer').empty();
+      new QRCode(document.getElementById('qrCodeContainer'), qrData);
+    });
+    // Add custom CSS to center row data and increase font size
+    $('#questions').css('text-align', 'center');
+    $('#questions th, #questions td').css('font-size', '16px'); // Adjust font size as needed
   </script>
 </body>
 
