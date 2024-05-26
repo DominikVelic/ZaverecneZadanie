@@ -3,7 +3,10 @@ session_start();
 
 require_once '../.config.php';
 
-$query = "SELECT * FROM questions";
+$query = "SELECT q.question, q.subject, 
+                 a.answer, a.count 
+          FROM answers a 
+          JOIN questions q ON q.id = a.question_id";
 
 if ($result = mysqli_query($conn, $query)) {
   $sqlData = array();
@@ -27,7 +30,5 @@ if ($resultJSON->num_rows > 0) {
 
   echo $json_data;
 }
-
-require '../header.php';
 
 ?>
