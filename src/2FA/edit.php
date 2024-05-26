@@ -26,10 +26,11 @@ if (isset($_GET['id'])) {
     $id = mysqli_real_escape_string($conn, $_GET['id']);
 
     // Fetch recipient information along with all prize details based on the provided ID
-    $query = "SELECT  a.answer q.id, q.question, q.subject, q.closed, a.answer
-              FROM answers a
-              LEFT JOIN question r ON  a.question_id = q.id
-              WHERE q.id = '$id'";
+    $query = "SELECT q.id as question_id, q.question, q.subject, q.closed, q.code, q.date_created, 
+                     a.id as answer_id, a.answer, a.appearance, a.count 
+              FROM questions q 
+              JOIN answers a ON q.id = a.question_id 
+              WHERE q.code = ?";
 
     $result = mysqli_query($conn, $query);
 
@@ -126,7 +127,6 @@ if (isset($_GET['id'])) {
 
                                 <?php
                                 } while ($row = mysqli_fetch_assoc($result));
-
                                 ?>
 
                                 </div>
