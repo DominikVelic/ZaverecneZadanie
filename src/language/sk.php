@@ -52,5 +52,6 @@ $lang = array(
     'date_created_dt' => 'Dátum vytvorenia',
     'user_dt' => 'Použivateľ',
     'code_dt' => 'Kód',
-    'qr_code_dt' => 'QR Kód'
+    'qr_code_dt' => 'QR Kód',
+    'answers' => 'Odpovede'
 );

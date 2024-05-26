@@ -51,5 +51,6 @@ $lang = array(
     'date_created_dt' => 'Date Created',
     'user_dt' => 'User',
     'code_dt' => 'Code',
-    'qr_code_dt' => 'QR Code'
+    'qr_code_dt' => 'QR Code',
+    'answers' => 'Answers'
 );

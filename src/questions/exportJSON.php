@@ -20,15 +20,13 @@ $resultJSON = $conn->query($query);
 
 if ($resultJSON->num_rows > 0) {
   $data = array();
-  while($row = $resultJSON->fetch_assoc()) {
-      $data[] = $row;
+  while ($row = $resultJSON->fetch_assoc()) {
+    $data[] = $row;
   }
   $json_data = json_encode($data, JSON_PRETTY_PRINT);
 
   header('Content-Type: application/json');
-  header('Content-Disposition: attachment; filename="vysledky.json"');
+  header('Content-Disposition: attachment; filename="qeustions.json"');
 
   echo $json_data;
 }
-
-?>

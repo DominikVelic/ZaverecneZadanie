@@ -21,7 +21,7 @@ require '../header.php';
 
 <body>
   <form action="export.php" method="post">
-    <a href="exportJSON.php" class="btn btn-info">Download JSON</a>
+    <a href="exportJSON.php" class="btn btn-info" style="position: relative; left: 80%">Download JSON</a>
   </form>
   <div class="modal fade" id="qrModal" tabindex="-1" role="dialog" aria-labelledby="qrModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -157,7 +157,6 @@ require '../header.php';
             code: rowId
           },
           success: function(response) {
-
             location.reload();
           },
           error: function(xhr, status, error) {
