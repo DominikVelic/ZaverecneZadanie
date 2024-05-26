@@ -4,40 +4,6 @@ session_start();
 require '../header.php';
 ?>
 
-<script>
-    var prizeCounter = 0;
-
-    function addNewAnswer() {
-        var container = document.getElementById("prize_container");
-        var clone = container.querySelector(".prize-section").cloneNode(true);
-
-        // Clear input values in the cloned section
-        var inputs = clone.querySelectorAll("input, select");
-        inputs.forEach((input) => (input.value = ""));
-
-        // Generate a unique ID for the cloned div
-        var newId = "prize" + prizeCounter;
-        clone.id = newId;
-
-        // Increment the counter for the next clone
-        prizeCounter++;
-
-        // Append the delete button to the cloned div
-        var deleteButton = document.createElement("button");
-        deleteButton.textContent = "Vymazať odpoveď";
-        deleteButton.setAttribute("type", "button");
-        deleteButton.classList.add("btn", "btn-outline-danger");
-        deleteButton.onclick = function() {
-            this.parentElement.remove();
-            prizeCounter--;
-        };
-        clone.appendChild(deleteButton);
-
-        // Append the cloned div to a parent container
-        container.appendChild(clone);
-    }
-</script>
-
 <body>
 
     <div class="container">
@@ -74,7 +40,7 @@ require '../header.php';
                                 <br>
                             </div>
 
-                            <button type="button" id="addFields" class="btn btn-success" onclick="addNewAnswer()"><?php echo $lang['add_answer'] ?></button>
+                            <button type="button" id="addFields" class="btn btn-success"><?php echo $lang['add_answer'] ?></button>
                             <button type="submit" class="btn btn-primary"><?php echo $lang['send'] ?></button>
 
                         </div>
@@ -85,6 +51,14 @@ require '../header.php';
     </div>
 
     <?php require '../footer.php'; ?>
+
+    <script>
+        $(document).ready(function() {
+            $('#addFields').on('click', function() {
+                addNewAnswer();
+            });
+        });
+    </script>
 </body>
 
 </html>

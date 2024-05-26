@@ -173,3 +173,35 @@ function clearCodeFromUrl() {
   const newPath = pathSegments.slice(0, -1).join("/") + "/"; // Remove the last segment (the code)
   history.replaceState(null, null, newPath + url.search); // Update the URL without the code
 }
+
+var prizeCounter = 0;
+
+function addNewAnswer() {
+  var container = document.getElementById("prize_container");
+  var clone = container.querySelector(".prize-section").cloneNode(true);
+
+  // Clear input values in the cloned section
+  var inputs = clone.querySelectorAll("input, select");
+  inputs.forEach((input) => (input.value = ""));
+
+  // Generate a unique ID for the cloned div
+  var newId = "prize" + prizeCounter;
+  clone.id = newId;
+
+  // Increment the counter for the next clone
+  prizeCounter++;
+
+  // Append the delete button to the cloned div
+  var deleteButton = document.createElement("button");
+  deleteButton.textContent = "Vymazať odpoveď";
+  deleteButton.setAttribute("type", "button");
+  deleteButton.classList.add("btn", "btn-outline-danger");
+  deleteButton.onclick = function () {
+    this.parentElement.remove();
+    prizeCounter--;
+  };
+  clone.appendChild(deleteButton);
+
+  // Append the cloned div to a parent container
+  container.appendChild(clone);
+}

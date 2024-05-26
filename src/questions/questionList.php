@@ -53,6 +53,8 @@ require '../header.php';
             <th><?php echo $lang['user_dt'] ?></th>
             <th><?php echo $lang['code_dt'] ?></th>
             <th><?php echo $lang['qr_code_dt'] ?></th>
+            <th></th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
@@ -103,30 +105,53 @@ require '../header.php';
             data: 'qr_code',
             visible: true,
             render: function(data, type, row, meta) {
-              var qrCodeId = 'qrcode-' + meta.row; // Unique ID for each QR code
-              return `<button class="btn btn-primary show-qr-code" data-qr="${data}" data-toggle="modal" data-target="#qrModal">Show QR Code</button>`;
+              var qrCodeURL = '/index.php/' + row.code; // Unique ID for each QR code
+              return `<button class="btn btn-primary show-qr-code" data-qr="${qrCodeURL}" data-toggle="modal" data-target="#qrModal">QR Code</button>`;
+            }
+          },
+          {
+            data: null,
+            visible: true,
+            render: function(data, type, row, meta) {
+              var qrCodeID = row.code; // Unique ID for each QR code
+              return `<button class="btn btn-primary edit-btn" data-id="${qrCodeID}">Edit</button>`;
+            }
+          },
+          {
+            data: null,
+            visible: true,
+            render: function(data, type, row, meta) {
+              var qrCodeID = row.code; // Unique ID for each QR code
+              return `<button class="btn btn-primary delete-btn" data-id="${qrCodeID}">Delete</button>`;
             }
           }
         ],
         responsive: true,
-        drawCallback: function(settings) {
-          var api = this.api();
-          api.rows().every(function(rowIdx, tableLoop, rowLoop) {
-            var data = this.data();
-            var qrCodeId = 'qrcode-' + rowIdx;
-            var qrCodeUrl = '/index.php/' + data.code;
-            new QRCode(document.getElementById(qrCodeId), qrCodeUrl);
-          });
-        }
+
       });
+
+      $('#questions').on('click', '.show-qr-code', function() {
+        var qrData = $(this).data('qr');
+        $('#qrCodeContainer').empty();
+        new QRCode(document.getElementById('qrCodeContainer'), qrData);
+      });
+
+      $('#questions').on('click', '.edit-btn', function() {
+        var rowId = $(this).data('id');
+
+        window.location.href = '/2FA/edit.php?id=' + rowId;
+      });
+
+      $('#questions').on('click', '.delete-btn', function() {
+        var rowId = $(this).data('id');
+
+        window.location.href = '/2FA/delete.php?id=' + rowId;
+      });
+
+
+      $('#questions').css('text-align', 'center');
+      $('#questions th, #questions td').css('font-size', '16px'); // Adjust font size as needed
     });
-    $('#questions').on('click', '.show-qr-code', function() {
-      var qrData = $(this).data('qr');
-      $('#qrCodeContainer').empty();
-      new QRCode(document.getElementById('qrCodeContainer'), qrData);
-    });
-    $('#questions').css('text-align', 'center');
-    $('#questions th, #questions td').css('font-size', '16px'); // Adjust font size as needed
   </script>
 </body>
 
