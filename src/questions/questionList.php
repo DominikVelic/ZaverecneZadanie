@@ -18,29 +18,6 @@ $resultJSON = $conn->query($query);
 require '../header.php';
 
 ?>
-
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
-<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
-
-<style>
-    #qrCodeContainer {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100%;
-    }
-    .modal-body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 300px; /* Adjust as needed */
-    }
-  </style>
-
 <body>
     <form action="export.php" method="post">
       <a href="exportJSON.php/" class="btn btn-info">Download JSON</a>
@@ -60,7 +37,6 @@ require '../header.php';
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal"><?php echo $lang['close_text'] ?></button>
         </div>
-
       </div>
     </div>
   </div>
@@ -69,8 +45,7 @@ require '../header.php';
       <div class="col">
         <h1><?php echo $lang['questions_dt'] ?></h1>
       </div>
-
-      </div>
+    </div>
     <div class="row">
       <table id="questions" class="compact stripe">
         <thead>
@@ -158,15 +133,12 @@ require '../header.php';
       });
     });
     $('#questions').on('click', '.show-qr-code', function() {
-
       var qrData = $(this).data('qr');
       $('#qrCodeContainer').empty();
       new QRCode(document.getElementById('qrCodeContainer'), qrData);
     });
-    // Add custom CSS to center row data and increase font size
     $('#questions').css('text-align', 'center');
     $('#questions th, #questions td').css('font-size', '16px'); // Adjust font size as needed
-
   </script>
 </body>
 

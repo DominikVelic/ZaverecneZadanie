@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: db
--- Generation Time: May 22, 2024 at 06:53 PM
+-- Generation Time: May 26, 2024 at 05:02 PM
 -- Server version: 8.0.32
 -- PHP Version: 8.2.8
 
@@ -41,6 +41,10 @@ CREATE TABLE `users` (
 --
 -- Dumping data for table `users`
 --
+
+INSERT INTO `users` (`id`, `fullname`, `email`, `login`, `password`, `2fa_code`, `created_at`, `admin`) VALUES
+(2, 'admin', 'admin@gmail.com', 'admin', '$argon2id$v=19$m=65536,t=4,p=1$OGpLcm9FVmdjRWdzTzVUZQ$4lCZa8UFrfMExXTPdGDABBR7HRz1mJEPrpywZCvOkRw', 'SV45HGDY2EMHVBSD', '2024-05-26 16:53:45', 1);
+
 --
 -- Indexes for dumped tables
 --
@@ -61,7 +65,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
