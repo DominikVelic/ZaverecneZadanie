@@ -85,7 +85,6 @@ require "../header.php";
                 </div>
                 <div class="row">
                     <div class="col mb-3">
-                        <a href="<?php echo filter_var($auth_url, FILTER_SANITIZE_URL); ?>" class="btn btn-primary"><?php echo $lang['google_login_text']; ?></a>
                         <button type="submit" class="btn btn-primary"><?php echo $lang['login_text']; ?></button>
                     </div>
                 </div>
