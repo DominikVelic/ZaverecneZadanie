@@ -13,11 +13,15 @@ if ($result = mysqli_query($conn, $query)) {
 }
 $database = json_encode($sqlData);
 
+$resultJSON = $conn->query($query);
+
 require '../header.php';
 
 ?>
-
 <body>
+    <form action="export.php" method="post">
+      <a href="exportJSON.php/" class="btn btn-info">Download JSON</a>
+    </form>
   <div class="modal fade" id="qrModal" tabindex="-1" role="dialog" aria-labelledby="qrModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -124,7 +128,14 @@ require '../header.php';
               var qrCodeID = row.code; // Unique ID for each QR code
               return `<button class="btn btn-primary delete-btn" data-id="${qrCodeID}">Delete</button>`;
             }
-          }
+          },
+          {
+            data: 'id',
+            visible: true,
+            render: function(data, type, row, meta) {
+              return '<a href="/2FA/edit.php/' + encodeURIComponent(row.id) + '" class="btn btn-info">Edit</a>';
+            }
+          },
         ],
         responsive: true,
 
