@@ -150,7 +150,21 @@ require '../header.php';
       $('#questions').on('click', '.delete-btn', function() {
         var rowId = $(this).data('id');
 
-        window.location.href = '/2FA/delete.php?id=' + rowId;
+        $.ajax({
+          type: 'POST',
+          url: '/2FA/delete.php',
+          data: {
+            code: rowId
+          },
+          success: function(response) {
+
+            location.reload();
+          },
+          error: function(xhr, status, error) {
+            console.error('Error deleting data:', error);
+          }
+        });
+
       });
 
 
