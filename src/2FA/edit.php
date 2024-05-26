@@ -10,14 +10,24 @@ if (isset($_GET['id'])) {
     // Sanitize input to prevent SQL injection
     $id = mysqli_real_escape_string($conn, $_GET['id']);
 
-    // Fetch recipient information along with all prize details based on the provided ID
+    // Prepare the query with a placeholder
     $query = "SELECT q.id as question_id, q.question, q.subject, q.closed, q.code, q.date_created, 
                      a.id as answer_id, a.answer, a.appearance, a.count 
               FROM questions q 
               JOIN answers a ON q.id = a.question_id 
               WHERE q.code = ?";
 
-    $result = mysqli_query($conn, $query);
+    // Prepare the statement
+    $stmt = mysqli_prepare($conn, $query);
+
+    // Bind the 'id' parameter to the placeholder
+    mysqli_stmt_bind_param($stmt, "s", $id);
+
+    // Execute the statement
+    mysqli_stmt_execute($stmt);
+
+    // Get the result
+    $result = mysqli_stmt_get_result($stmt);
 
     if ($result) {
         // Check if any rows were returned
@@ -25,12 +35,18 @@ if (isset($_GET['id'])) {
             // Display recipient information
             $row = mysqli_fetch_assoc($result);
         } else {
-            echo "Error: " . mysqli_error($conn);
+            echo "No results found.";
         }
+    } else {
+        echo "Error: " . mysqli_error($conn);
     }
+
+    // Close the statement
+    mysqli_stmt_close($stmt);
 } else {
     echo "No ID provided in the URL.";
 }
+
 
 ?>
 
@@ -71,12 +87,6 @@ if (isset($_GET['id'])) {
 <body>
 
     <div class="container">
-        <div class="row">
-            <div class="col-12 clean-a pb-5">
-                <a href="index.php" class="me-5">Home</a>
-            </div>
-        </div>
-
         <div class="row">
             <div class="card col-12 mb-5 bg-dark text-white">
                 <div class="card-body m-5">
